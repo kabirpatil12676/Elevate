@@ -18,4 +18,22 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  .card-vignette {
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(20, 30, 70, 0.75) 45%, rgba(0, 0, 0, 0.25) 75%, transparent 100%);
+  }
+
+  .card-ribbon-vibrant {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 35%, #3b82f6 50%, #2563eb 65%, #1d4ed8 100%);
+    box-shadow: 0 -4px 16px rgba(37, 99, 235, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  }
+
+  .cta-banner {
+    background: linear-gradient(90deg, rgba(236, 238, 241, 0.95) 0%, rgba(224, 226, 238, 0.95) 100%);
+    backdrop-filter: blur(10px);
+  }
+
+  .course-overlay {
+    background: linear-gradient(to top, rgba(36, 56, 156, 0.9) 0%, rgba(36, 56, 156, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
+  }
 }

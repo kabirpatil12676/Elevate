@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Lenis from 'lenis';
 import Home from './pages/Home';
+import Courses from './pages/Courses';
+import Community from './pages/Community';
 
 function App() {
   // Initialize Lenis for buttery smooth momentum scrolling (like WebVeda)
@@ -33,6 +35,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/community" element={<Community />} />
         {/* We will add more routes here for login, dashboard, journeys, etc. */}
       </Routes>
     </Router>

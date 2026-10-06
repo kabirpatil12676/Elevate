@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="en" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ELEVATE Community</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#575a64",
+                        "primary-container": "#3f51b5",
+                        "surface": "#f7f9fc",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#bac3ff",
+                        "surface-variant": "#e0e3e6",
+                        "on-surface-variant": "#454652",
+                        "on-tertiary-fixed": "#181b24",
+                        "surface-dim": "#d8dadd",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#293ca0",
+                        "on-tertiary-container": "#cfd2dd",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#959efd",
+                        "on-primary-fixed": "#00105c",
+                        "surface-container": "#eceef1",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#000767",
+                        "on-primary-container": "#cacfff",
+                        "background": "#f7f9fc",
+                        "surface-container-low": "#f2f4f7",
+                        "on-secondary-container": "#27308a",
+                        "secondary": "#4c56af",
+                        "surface-tint": "#4355b9",
+                        "inverse-on-surface": "#eff1f4",
+                        "surface-container-high": "#e6e8eb",
+                        "on-background": "#191c1e",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "secondary-fixed": "#e0e0ff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#bac3ff",
+                        "tertiary": "#3f434c",
+                        "tertiary-fixed-dim": "#c4c6d2",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed": "#e0e2ee",
+                        "on-tertiary-fixed-variant": "#434750",
+                        "outline": "#757684",
+                        "primary-fixed": "#dee0ff",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c5c5d4",
+                        "surface-bright": "#f7f9fc",
+                        "surface-container-highest": "#e0e3e6",
+                        "on-secondary-fixed-variant": "#343d96",
+                        "on-surface": "#191c1e",
+                        "primary": "#24389c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "80px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "label-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "label-lg": ["14px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.3", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #24389c 0%, #3f51b5 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest dark:bg-inverse-surface shadow-sm docked full-width top-0 sticky z-50"><div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto"><div class="flex items-center gap-2 font-headline-xl text-headline-xl text-primary dark:text-primary-fixed"><span class="material-symbols-outlined text-3xl">check_circle</span>ELEVATE</div><nav class="hidden md:flex items-center space-x-8"><a class="font-label-lg text-label-lg text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="#">Courses <span class="material-symbols-outlined text-sm">expand_more</span></a><a class="font-label-lg text-label-lg text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="#">Community</a><a class="font-label-lg text-label-lg text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="#">Career Roadmaps</a><a class="font-label-lg text-label-lg text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="#">Testimonials</a><a class="font-label-lg text-label-lg text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="#">About Elevate</a></nav><div class="flex items-center"><button class="hidden md:inline-flex items-center justify-center px-8 py-2 rounded-full border border-outline-variant text-on-surface font-label-lg text-label-lg hover:bg-surface-variant transition-colors">Login</button><button class="md:hidden text-on-surface p-2"><span class="material-symbols-outlined">menu</span></button></div></div></header>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-24 pb-32 overflow-hidden bg-surface">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center relative z-10">
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-stack-md max-w-4xl mx-auto">
+                    The Smartest Community for the <span class="text-primary">Smartest People!</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-stack-lg">
+                    Join a network of driven individuals, expert mentors, and lifelong learners. Elevate your career with real connections that drive real impact.
+                </p>
+<div class="flex flex-col sm:flex-row justify-center items-center gap-stack-md">
+<button class="w-full sm:w-auto px-8 py-4 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg hover:-translate-y-1 transition-transform shadow-lg flex items-center justify-center gap-2">
+                        Become a Member
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Abstract background elements -->
+<div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-20 pointer-events-none">
+<div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-primary-container rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+<div class="absolute top-[20%] left-[-10%] w-72 h-72 bg-secondary-container rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+<div class="absolute bottom-[-20%] left-[20%] w-80 h-80 bg-tertiary-container rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+</div>
+</section>
+<!-- Stats Section (Bento Grid) -->
+<section class="py-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-surface-container rounded-xl p-stack-lg text-center shadow-sm">
+<div class="font-headline-xl text-headline-xl text-primary mb-stack-sm">50k+</div>
+<div class="font-label-lg text-label-lg text-on-surface-variant">Active Members</div>
+</div>
+<div class="bg-surface-container rounded-xl p-stack-lg text-center shadow-sm">
+<div class="font-headline-xl text-headline-xl text-primary mb-stack-sm">120+</div>
+<div class="font-label-lg text-label-lg text-on-surface-variant">Cities Reached</div>
+</div>
+<div class="bg-surface-container rounded-xl p-stack-lg text-center shadow-sm">
+<div class="font-headline-xl text-headline-xl text-primary mb-stack-sm">500+</div>
+<div class="font-label-lg text-label-lg text-on-surface-variant">Events Hosted</div>
+</div>
+</div>
+</section>
+<!-- Value Props Section -->
+<section class="py-section-gap bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-sm">The ELEVATE Community</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Everything you need to grow, connect, and succeed.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Prop 1 -->
+<div class="flex gap-gutter items-start p-stack-lg rounded-xl border border-outline-variant hover:shadow-md transition-shadow bg-surface">
+<div class="flex-shrink-0 w-16 h-16 bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Build Connections</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Join a community built for learning, interaction and growth. Network with peers and mentors who share your drive.</p>
+</div>
+</div>
+<!-- Prop 2 -->
+<div class="flex gap-gutter items-start p-stack-lg rounded-xl border border-outline-variant hover:shadow-md transition-shadow bg-surface">
+<div class="flex-shrink-0 w-16 h-16 bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">event</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Invite-Only Events</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Participate in virtual and offline events, workshops, and exclusive networking sessions curated for members.</p>
+</div>
+</div>
+<!-- Prop 3 -->
+<div class="flex gap-gutter items-start p-stack-lg rounded-xl border border-outline-variant hover:shadow-md transition-shadow bg-surface">
+<div class="flex-shrink-0 w-16 h-16 bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">diamond</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Get Recognized</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Earn rewards, recognition, and stand out among your peers through our monthly leadership boards and community highlights.</p>
+</div>
+</div>
+<!-- Prop 4 -->
+<div class="flex gap-gutter items-start p-stack-lg rounded-xl border border-outline-variant hover:shadow-md transition-shadow bg-surface">
+<div class="flex-shrink-0 w-16 h-16 bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">work</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Get Opportunities</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Access exclusive freelancing gigs, job postings, and collaboration opportunities shared directly by community members.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Gallery Section -->
+<section class="py-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-sm">Real Connections. Real Impact.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Glimpses from our offline meetups and networking events.</p>
+</div>
+<div class="hidden md:flex gap-4">
+<button class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-variant transition-colors text-on-surface">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center hover:bg-surface-variant transition-colors text-on-surface">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Asymmetric Masonry-style Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter h-[600px]">
+<div class="md:col-span-5 h-full rounded-xl overflow-hidden relative group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A diverse group of young professionals sitting together in a modern, well-lit coworking space, smiling and engaging in a lively discussion. The setting is bright with a light-mode aesthetic, featuring comfortable seating and professional attire. The mood is collaborative and energetic, highlighting real-world connections in a premium corporate learning environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9EHfXuy90mh4m78mTLAC9pvHjOLf8o68fOFAmQ050eo_05K8WoO0znj2BhLKgnih_wDcF4RxPS3FlMQA1FxEJXsbYHsppeeTlkwhF3jDUzdD9wGAcJDkhEWFLvPOO2Ic_tP8Y0z-j7qtKlaW9xsztHQJ6fehqgflQwAZiOZmB6zUDL8NHkLcF_I-ySTRKEBqkAZ_OaXpktzQ9e4btz8YJc751MyH7yOKmYP6iqxXXUFEssjbQJugwKA"/>
+</div>
+<div class="md:col-span-7 h-full flex flex-col gap-gutter">
+<div class="flex-1 rounded-xl overflow-hidden relative group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A large group of happy individuals posing for a group photo at an outdoor community event. They are dressed casually, smiling broadly, and showing camaraderie. The lighting is natural and bright, conveying a sense of vibrant community spirit and successful networking within an educational context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGBX0OYDC75YU_eR1orYuxQifQ78FPHNUq3jM3tRTQt6GTvm6VsYHWo_ailImfs1kA5GfQKwiDGYMU21ffq2WvgwWeeFULl5O-2SZZZ9lgL5J3MBJE-vx2TsLXLojmYGEvrLt9lDtOriOTrDIfgmdVXVOs5JJoRkwHS_ApvPiFtyeuX1nzzCp_nbwzoVY48U9R5eL8xLUum7dYHIb5N4xhOx99RdvcwaJnDSiiBQn60Qo0nmPN02Ulsg"/>
+</div>
+<div class="flex-1 grid grid-cols-2 gap-gutter">
+<div class="rounded-xl overflow-hidden relative group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A close-up of a student wearing a graduation cap and gown, smiling proudly in an outdoor campus setting surrounded by trees. The lighting is sunny and optimistic, reflecting achievement and structured progress in a premium educational journey. The visual style is crisp and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVeryjLQwHO_VhvLY03lOntujULoZdnpo1q0Ui4slrjFv4M9XFHzy46WZzOOEwkNot0rjvaqaCdfVy5v5nSIyPwRvHr9nWZmsRUqrnA2y-6AiMgT6XU9j0C_yTerhtwfDPiI6NZzICpgkEyIXGMUlx_GVYzm-YJqcEGSGxzhmwDEAXhzB_BViCT-tfQeGaoL-Dm2s9rsejRQHtPo5TCZqDlzyOCRoztLoDu-hV1fRumjS1zsvMYIOHMQ"/>
+</div>
+<div class="rounded-xl overflow-hidden relative group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A small group of professionals in a brightly lit indoor workshop setting, focusing intently on a presentation. The aesthetic is clean and corporate modern, with high contrast and precise details. The atmosphere is one of focused learning and expert-led mentorship, utilizing a dependable blue-anchored palette in the background elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCZEpstlui0XuqNQl1FrKL6Lk7zyuRZuKfYcH2dYvrzcK0wiajcpIQSSAzuLyq7508sLy2mRyM7D0a9wmauVKszGwezuI17Oo8kPZuc8l2NaVrVwSLU0c9BOJ9JsbP_B8NFiw9qgCLwzxrq_7F4xk4WGS-dxBafClNrY56tO3YIGUT61V1Xt4x82y6LuBICg6ZTi8alZQl4UMWRI9KZlSfH9oqlGMSPG5HJ1HJky1nj_FYBAF4yu8egw"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- The Community Never Sleeps -->
+<section class="py-section-gap bg-surface">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-16">The Community Never Sleeps</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-surface-container-lowest p-stack-lg rounded-2xl shadow-sm hover:-translate-y-1 transition-transform border border-outline-variant/30">
+<div class="w-12 h-12 mb-stack-md mx-auto text-primary">
+<span class="material-symbols-outlined text-4xl">workspace_premium</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Monthly Recognition</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Top learners on the leaderboard get public recognition and exclusive invites to advanced sessions.</p>
+</div>
+<div class="bg-surface-container-lowest p-stack-lg rounded-2xl shadow-sm hover:-translate-y-1 transition-transform border border-outline-variant/30">
+<div class="w-12 h-12 mb-stack-md mx-auto text-primary">
+<span class="material-symbols-outlined text-4xl">forum</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Community Sessions</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Join 1:1 or group sessions, participate in AMAs, and host challenges with fellow learners globally.</p>
+</div>
+<div class="bg-surface-container-lowest p-stack-lg rounded-2xl shadow-sm hover:-translate-y-1 transition-transform border border-outline-variant/30">
+<div class="w-12 h-12 mb-stack-md mx-auto text-primary">
+<span class="material-symbols-outlined text-4xl">handshake</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Engagement Drives</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Active community interaction, daily tasks, and monthly collaborative challenges to earn platform points.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Sticky Bottom CTA (simulating the floating bar in the design) -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 w-11/12 max-w-4xl z-40">
+<div class="glass-card rounded-full p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="font-label-lg text-label-lg text-on-surface px-4">
+                    Get access to Skills, Jobs, Community
+                </div>
+<button class="w-full sm:w-auto px-6 py-3 rounded-full bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-fixed-variant transition-colors whitespace-nowrap shadow-md">
+                    Become An ELEVATE Member
+                </button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="dark:bg-secondary full-width mt-32 bg-surface-container-lowest"><div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap"><div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-16"><div class="md:col-span-4"><div class="flex items-center gap-2 font-headline-md text-headline-md text-primary mb-stack-md"><span class="material-symbols-outlined">check_circle</span>ELEVATE</div><p class="font-body-md text-body-md text-on-surface-variant">Empowering the next generation of digital leaders with expert-led, practical education.</p></div><div class="md:col-span-2"><h4 class="font-label-lg text-label-lg text-on-surface mb-stack-md">COMPANY</h4><ul class="space-y-stack-sm"><li class=""><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary" href="#">About Us</a></li><li class=""><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary" href="#">Contact</a></li><li class=""><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary" href="#">Careers</a></li></ul></div><div class="md:col-span-2"><h4 class="font-label-lg text-label-lg text-on-surface mb-stack-md">LEGAL</h4><ul class="space-y-stack-sm"><li class=""><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary" href="#">Privacy Policy</a></li><li class=""><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary" href="#">Terms of Service</a></li><li class=""><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary" href="#">FAQ</a></li></ul></div><div class="md:col-span-4"><h4 class="font-label-lg text-label-lg text-on-surface mb-stack-md">SUBSCRIBE</h4><div class="space-y-4"><input class="w-full p-3 rounded-lg border border-outline-variant bg-surface text-on-surface" placeholder="Enter your email" type="email"/><button class="w-full py-3 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg hover:opacity-90 transition-opacity">Subscribe</button></div></div></div><div class="pt-stack-lg border-t border-outline-variant/30 flex justify-between items-center"><p class="font-label-md text-label-md text-on-surface-variant">© 2024 ELEVATE. All rights reserved.</p><div class="text-on-surface-variant"><span class="material-symbols-outlined">share</span></div></div></div></footer>
+</body></html>

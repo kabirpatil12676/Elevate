@@ -48,10 +48,10 @@ const Home = () => {
             ELEVATE
           </Link>
           <div className="hidden md:flex items-center space-x-8 font-medium">
-            <a className="hover:text-primary transition-colors flex items-center gap-1 text-on-surface" href="#">
+            <Link to="/courses" className="hover:text-primary transition-colors flex items-center gap-1 text-on-surface">
               Courses <span className="material-symbols-outlined text-sm">expand_more</span>
-            </a>
-            <a className="hover:text-primary transition-colors text-on-surface" href="#">Community</a>
+            </Link>
+            <Link to="/community" className="hover:text-primary transition-colors text-on-surface">Community</Link>
             <a className="hover:text-primary transition-colors text-on-surface" href="#">Career Roadmaps</a>
             <a className="hover:text-primary transition-colors text-on-surface" href="#">Testimonials</a>
             <a className="hover:text-primary transition-colors text-on-surface" href="#">About Elevate</a>

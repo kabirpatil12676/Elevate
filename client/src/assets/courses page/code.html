@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" style="">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>ELEVATE - Courses</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#575a64",
+                        "primary-container": "#3f51b5",
+                        "surface": "#f7f9fc",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#bac3ff",
+                        "surface-variant": "#e0e3e6",
+                        "on-surface-variant": "#454652",
+                        "on-tertiary-fixed": "#181b24",
+                        "surface-dim": "#d8dadd",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#293ca0",
+                        "on-tertiary-container": "#cfd2dd",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#959efd",
+                        "on-primary-fixed": "#00105c",
+                        "surface-container": "#eceef1",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#000767",
+                        "on-primary-container": "#cacfff",
+                        "background": "#f7f9fc",
+                        "surface-container-low": "#f2f4f7",
+                        "on-secondary-container": "#27308a",
+                        "secondary": "#4c56af",
+                        "surface-tint": "#4355b9",
+                        "inverse-on-surface": "#eff1f4",
+                        "surface-container-high": "#e6e8eb",
+                        "on-background": "#191c1e",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "secondary-fixed": "#e0e0ff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#bac3ff",
+                        "tertiary": "#3f434c",
+                        "tertiary-fixed-dim": "#c4c6d2",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed": "#e0e2ee",
+                        "on-tertiary-fixed-variant": "#434750",
+                        "outline": "#757684",
+                        "primary-fixed": "#dee0ff",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c5c5d4",
+                        "surface-bright": "#f7f9fc",
+                        "surface-container-highest": "#e0e3e6",
+                        "on-secondary-fixed-variant": "#343d96",
+                        "on-surface": "#191c1e",
+                        "primary": "#24389c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "80px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "label-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "label-lg": ["14px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.3", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .course-overlay {
+            background: linear-gradient(to top, rgba(36, 56, 156, 0.9) 0%, rgba(36, 56, 156, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
+        }
+
+        .cta-banner {
+            background: linear-gradient(90deg, rgba(236, 238, 241, 0.95) 0%, rgba(224, 226, 238, 0.95) 100%);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+    <style>
+        .card-ribbon-vibrant {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 35%, #3b82f6 50%, #2563eb 65%, #1d4ed8 100%);
+            box-shadow: 0 -4px 16px rgba(37, 99, 235, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-surface font-body-md antialiased flex flex-col min-h-screen">
+    <!-- TopNavBar -->
+    <header class="bg-surface-container-lowest dark:bg-inverse-surface shadow-sm docked full-width top-0 z-50 sticky">
+        <div
+            class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+            <a class="text-headline-md font-headline-xl font-extrabold text-primary dark:text-primary-fixed flex items-center gap-2"
+                href="#"><span class="material-symbols-outlined text-primary" data-icon="check_circle"
+                    style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>ELEVATE</a>
+            <nav class="hidden md:flex items-center gap-8"><a
+                    class="text-on-surface-variant dark:text-surface-variant hover:text-primary font-label-lg text-label-lg transition-colors duration-200 flex items-center gap-1"
+                    href="#">Courses<span class="material-symbols-outlined text-[18px]">expand_more</span></a><a
+                    class="text-on-surface-variant dark:text-surface-variant hover:text-primary font-label-lg text-label-lg transition-colors duration-200"
+                    href="#">Community</a><a
+                    class="text-on-surface-variant dark:text-surface-variant hover:text-primary font-label-lg text-label-lg transition-colors duration-200"
+                    href="#">Career Roadmaps</a><a
+                    class="text-on-surface-variant dark:text-surface-variant hover:text-primary font-label-lg text-label-lg transition-colors duration-200"
+                    href="#">Testimonials</a><a
+                    class="text-on-surface-variant dark:text-surface-variant hover:text-primary font-label-lg text-label-lg transition-colors duration-200"
+                    href="#">About Elevate</a></nav>
+            <div class="flex items-center gap-4"><button
+                    class="hidden md:block font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors border border-outline-variant px-8 py-2 rounded-full">Login</button><button
+                    class="md:hidden text-on-surface"><span class="material-symbols-outlined"
+                        data-icon="menu">menu</span></button></div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="flex-grow pb-section-gap relative">
+        <!-- Hero & Filters -->
+        <section class="px-margin-mobile md:px-margin-desktop py-stack-lg max-w-container-max mx-auto text-center">
+            <h1
+                class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-stack-md text-on-surface">
+                Master the Skills of Tomorrow</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-stack-lg">Explore
+                practical, expert-led courses designed to accelerate your professional growth.</p>
+            <div class="max-w-xl mx-auto mb-stack-lg relative">
+                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline"
+                    data-icon="search">search</span>
+                <input
+                    class="w-full bg-surface-container pl-12 pr-4 py-3 rounded-full border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-body-md text-body-md"
+                    placeholder="Search for courses, skills, or mentors..." type="text">
+            </div>
+            <div class="flex flex-wrap justify-center gap-stack-sm">
+                <button
+                    class="px-6 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-colors shadow-sm">All
+                    Courses</button>
+                <button
+                    class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-colors border border-outline-variant">AI
+                    &amp; Digital</button>
+                <button
+                    class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-colors border border-outline-variant">Career
+                    Growth</button>
+                <button
+                    class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-colors border border-outline-variant">Communication</button>
+            </div>
+        </section>
+        <!-- Course Grid -->
+        <section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter"><!-- Card 1 -->
+                <div
+                    class="group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/20 bg-surface-container-lowest cursor-pointer flex flex-col h-[460px]">
+                    <div class="absolute inset-0 z-0">
+                        <img alt="How To Do Engineering"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRG4aT_4k0YkYKchQIJwXsjkBvKIjfqjhTtsP8vfiH_DGWTFEnjU0Buacu_3prd9rVZijD0lQSaRTLgTvKQ-qi5fW4JaFDj10xpARWul4faLDAxv19xAdGkGeXhO0JFaZeI33BnMQPjPRuz2JQOTNqAERwOHoMQazS74QyppKWKLNulmEZqVofNplfEuXybQUw-D3qQrn1cmGUC-pwY9jd1lcPGFKhq4gQsbG7iNKiE91OEZnXhJc-pIKzL_0Ie51gET-2xZ3sNLpg-Qk">
+                    </div>
+                    <div class="absolute inset-0 card-vignette z-10"></div>
+                    <div
+                        class="relative z-20 flex flex-col h-full justify-end items-center text-center px-4 pb-4 mt-auto">
+                        <h3
+                            class="text-white font-headline-xl font-extrabold text-[26px] leading-tight uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide mb-1">
+                            HOW TO DO<br>ENGINEERING
+                        </h3>
+                        <p
+                            class="text-white/90 text-[13px] font-body-md font-medium tracking-wide drop-shadow-sm mb-3.5">
+                            A Practical Student Guide</p>
+                        <div
+                            class="inline-flex items-center justify-center gap-1.5 bg-white text-[#24389c] font-bold text-[13px] px-4 py-1.5 rounded-xl shadow-md border border-white/40 mb-3">
+                            <span class="material-symbols-outlined text-[17px] text-[#24389c]">schedule</span>
+                            <span class="">3 hr 30 min</span>
+                        </div>
+                    </div>
+                    <div
+                        class="relative z-20 w-full py-3 px-4 card-ribbon-vibrant text-white text-center flex items-center justify-center gap-2 border-t border-white/30 rounded-b-3xl">
+                        <span class="material-symbols-outlined text-[17px] text-white drop-shadow">auto_awesome</span>
+                        <span class="font-extrabold text-[13px] tracking-widest uppercase drop-shadow">NEWLY
+                            LAUNCHED</span>
+                        <span class="material-symbols-outlined text-[17px] text-white drop-shadow">auto_awesome</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/20 bg-surface-container-lowest cursor-pointer flex flex-col h-[460px]">
+                    <div class="absolute inset-0 z-0">
+                        <img alt="How To Organise An Event"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn6Lct4wfuDXvpC_cVWP62bxCb7vy9qHRX-0fWji2UgB1fstx9H376CxCOkYoMpaLSWz5_insdplkENS9BeIgtdxMByaNYw__8zR-KGCjh_zrBNvdwwL6YX-fdNQRS3v2LI_vEE3tCbmFyi13ZWb27rLl-ikytOD_Z4rdyQIUJZ4uoZzBvZM6LAg3bFs3kWrVQ7CPujcEHnXkxoikmyqDYPDFbRHnmI4MAC-va6Yg7iKoun20ILk5s_sL_nm3nwbDO8Y7GhMMHXFcyHMs">
+                    </div>
+                    <div class="absolute inset-0 card-vignette z-10"></div>
+                    <div
+                        class="relative z-20 flex flex-col h-full justify-end items-center text-center px-4 pb-4 mt-auto">
+                        <h3
+                            class="text-white font-headline-xl font-extrabold text-[26px] leading-tight uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide mb-1">
+                            HOW TO ORGANISE<br>AN EVENT
+                        </h3>
+                        <p
+                            class="text-white/90 text-[13px] font-body-md font-medium tracking-wide drop-shadow-sm mb-3.5">
+                            End-to-End Event Management</p>
+                        <div
+                            class="inline-flex items-center justify-center gap-1.5 bg-white text-[#24389c] font-bold text-[13px] px-4 py-1.5 rounded-xl shadow-md border border-white/40 mb-3">
+                            <span class="material-symbols-outlined text-[17px] text-[#24389c]">schedule</span>
+                            <span class="">4 hr 15 min</span>
+                        </div>
+                    </div>
+                    <div
+                        class="relative z-20 w-full py-3 px-4 card-ribbon-vibrant text-white text-center flex items-center justify-center gap-2 border-t border-white/30 rounded-b-3xl">
+                        <span class="material-symbols-outlined text-[17px] text-white drop-shadow">auto_awesome</span>
+                        <span class="font-extrabold text-[13px] tracking-widest uppercase drop-shadow">POPULAR
+                            COURSE</span>
+                        <span class="material-symbols-outlined text-[17px] text-white drop-shadow">auto_awesome</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/20 bg-surface-container-lowest cursor-pointer flex flex-col h-[460px]">
+                    <div class="absolute inset-0 z-0">
+                        <img alt="How To Do Anchoring"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTfRNgEHeoqVthamolc3WTS2W3WdE0qv0M9UgD7emRfC3HM4dusncpuMbzCw8iXvt59WFpd0ZQYemUOqQiEry2b-UiMaz1vY-v8uhdSJ3jXYlXDE2vELGQNLx5AtpR2XBXSB9H63Xdn9xYTokIrh2aYEJzhgw22c2tQypn5PCCrYmWuub4neoknUzVaRURWO0pOMv_tQWdF1-VVAhRLS7OEkFulAr5-YiIuxW3hU-zuLPK13LoKkLTNBNa84e-o87rZamHiCUbZXbWkA0">
+                    </div>
+                    <div class="absolute inset-0 card-vignette z-10"></div>
+                    <div
+                        class="relative z-20 flex flex-col h-full justify-end items-center text-center px-4 pb-4 mt-auto">
+                        <h3
+                            class="text-white font-headline-xl font-extrabold text-[26px] leading-tight uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide mb-1">
+                            HOW TO DO<br>ANCHORING
+                        </h3>
+                        <p
+                            class="text-white/90 text-[13px] font-body-md font-medium tracking-wide drop-shadow-sm mb-3.5">
+                            Stage Confidence &amp; Hosting</p>
+                        <div
+                            class="inline-flex items-center justify-center gap-1.5 bg-white text-[#24389c] font-bold text-[13px] px-4 py-1.5 rounded-xl shadow-md border border-white/40 mb-3">
+                            <span class="material-symbols-outlined text-[17px] text-[#24389c]">schedule</span>
+                            <span class="">2 hr 45 min</span>
+                        </div>
+                    </div>
+                    <div
+                        class="relative z-20 w-full py-3 px-4 card-ribbon-vibrant text-white text-center flex items-center justify-center gap-2 border-t border-white/30 rounded-b-3xl">
+                        <span class="material-symbols-outlined text-[17px] text-white drop-shadow">auto_awesome</span>
+                        <span class="font-extrabold text-[13px] tracking-widest uppercase drop-shadow">NEWLY
+                            LAUNCHED</span>
+                        <span class="material-symbols-outlined text-[17px] text-white drop-shadow">auto_awesome</span>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div
+                    class="group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/20 bg-surface-container-lowest cursor-pointer flex flex-col h-[460px]">
+                    <div class="absolute inset-0 z-0">
+                        <img alt="How To Write Anchoring Script"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFXlSk4YV7KzJbfT_-KeQUCHOLQwzABJNTwIjeaj_diMPV78ZItiklekKrILAPnUJ7lfwPtaSK1GjmCkWOskdIRu6GMBDQMmFGdo3HiSPpU3xvpObd6eyaz9SLVQ6n-HFFAYKT71mXlykQFM8ZXwz2BCvlmFZcl0EnoVZnMiuI1eOLnfC_P2sv2OC7L3X2aQmFejpgZTT1G-LHAvql9EFVltozzWZl2XI8SCC08taLH4xPz9Wllxd05SCxQ6YUfieBKVAwzVMb9X-PEPk">
+                    </div>
+                    <div class="absolute inset-0 card-vignette z-10"></div>
+                    <div
+                        class="relative z-20 flex flex-col h-full justify-end items-center text-center px-4 pb-4 mt-auto">
+                        <h3
+                            class="text-white font-headline-xl font-extrabold text-[24px] leading-tight uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide mb-1">
+                            WRITE ANCHORING<br>SCRIPT
+                        </h3>
+                        <p
+                            class="text-white/90 text-[13px] font-body-md font-medium tracking-wide drop-shadow-sm mb-3.5">
+                            Flow, Transitions &amp; Speeches</p>
+                        <div
+                            class="inline-flex items-center justify-center gap-1.5 bg-white text-[#24389c] font-bold text-[13px] px-4 py-1.5 rounded-xl shadow-md border border-white/40 mb-3">
+                            <span class="material-symbols-outlined text-[17px] text-[#24389c]">schedule</span>
+                            <span class="">2 hr 10 min</span>
+                        </div>
+                    </div>
+                    <div
+                        class="relative z-20 w-full py-3 px-4 card-ribbon-vibrant text-white text-center flex items-center justify-center gap-2 border-t border-white/30 rounded-b-3xl">
+                        <span class="material-symbols-outlined text-[17px] text-white drop-shadow">auto_awesome</span>
+                        <span class="font-extrabold text-[13px] tracking-widest uppercase drop-shadow">TRENDING
+                            NOW</span>
+                        <span class="material-symbols-outlined text-[17px] text-white drop-shadow">auto_awesome</span>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div
+                    class="group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/20 bg-surface-container-lowest cursor-pointer flex flex-col h-[460px]">
+                    <div class="absolute inset-0 z-0">
+                        <img alt="What To Do In First Year"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCSUSfNZVVTn8i3hkpKCsOQeu2FVhX3qLdr_6oVau8yEwBz4-eryaTb7doWqMIqI0Fww7kpodqItq33F4u7Y2bNS9rRTLoerr1bsl1KVdb9nvopMMm6CLrIu5G79PK8iJ9JU7jrJ3U1nlR31kZbeE7WFlQTBi-Uq5qxcYGl5pSsltdLRnsrDfLuIkEcN2agHMtzqbxsQqKQd73qBjsjVwzihDFyb25y2ExOaIboO5M0KZ3PsXgY_yozyW-BVNGorzaNqmyKYPH5krViEc">
+                    </div>
+                    <div class="absolute inset-0 card-vignette z-10"></div>
+                    <div
+                        class="relative z-20 flex flex-col h-full justify-end items-center text-center px-4 pb-4 mt-auto">
+                        <h3
+                            class="text-white font-headline-xl font-extrabold text-[25px] leading-tight uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide mb-1">
+                            WHAT TO DO IN<br>FIRST YEAR
+                        </h3>
+                        <p
+                            class="text-white/90 text-[13px] font-body-md font-medium tracking-wide drop-shadow-sm mb-3.5">
+                            Building Your Engineering Foundation</p>
+                        <div
+                            class="inline-flex items-center justify-center gap-1.5 bg-white text-[#24389c] font-bold text-[13px] px-4 py-1.5 rounded-xl shadow-md border border-white/40 mb-3">
+                            <span class="material-symbols-outlined text-[17px] text-[#24389c]">schedule</span>
+                            <span class="">3 hr 00 min</span>
+                        </div>
+                    </div>
+                    <div
+                        class="relative z-20 w-full py-3 px-4 card-ribbon-vibrant text-white text-center flex items-center justify-center gap-2 border-t border-white/30 rounded-b-3xl">
+                        <span class="material-symbols-outlined text-[17px] text-white drop-shadow">auto_awesome</span>
+                        <span class="font-extrabold text-[13px] tracking-widest uppercase drop-shadow">TOP RATED</span>
+                        <span class="material-symbols-outlined text-[17px] text-white drop-shadow">auto_awesome</span>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div
+                    class="group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/20 bg-surface-container-lowest cursor-pointer flex flex-col h-[460px]">
+                    <div class="absolute inset-0 z-0">
+                        <img alt="How To Form A Team"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            src="D:\final year project\Elevate\client\src\assets\courses page\edited . 4 .jpg"
+                            style="object-fit: cover; object-position: center top;">
+                    </div>
+                    <div class="absolute inset-0 card-vignette z-10"></div>
+                    <div
+                        class="relative z-20 flex flex-col h-full justify-end items-center text-center px-4 pb-4 mt-auto">
+                        <h3
+                            class="text-white font-headline-xl font-extrabold text-[26px] leading-tight uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide mb-1">
+                            HOW TO FORM<br>A TEAM
+                        </h3>
+                        <p
+                            class="text-white/90 text-[13px] font-body-md font-medium tracking-wide drop-shadow-sm mb-3.5">
+                            For an Engineering Project</p>
+                        <div
+                            class="inline-flex items-center justify-center gap-1.5 bg-white text-[#24389c] font-bold text-[13px] px-4 py-1.5 rounded-xl shadow-md border border-white/40 mb-3">
+                            <span class="material-symbols-outlined text-[17px] text-[#24389c]">schedule</span>
+                            <span class="">1 hr 50 min</span>
+                        </div>
+                    </div>
+                    <div
+                        class="relative z-20 w-full py-3 px-4 card-ribbon-vibrant text-white text-center flex items-center justify-center gap-2 border-t border-white/30 rounded-b-3xl">
+                        <span class="material-symbols-outlined text-[17px] text-white drop-shadow">auto_awesome</span>
+                        <span class="font-extrabold text-[13px] tracking-widest uppercase drop-shadow">MOST
+                            ENROLLED</span>
+                        <span class="material-symbols-outlined text-[17px] text-white drop-shadow">auto_awesome</span>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div
+                    class="group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/20 bg-surface-container-lowest cursor-pointer flex flex-col h-[460px]">
+                    <div class="absolute inset-0 z-0">
+                        <img alt="How To Select Problem Statement"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb6rc-v19OFof75dN6jK7jClXIwcdSfhsHvylq8nnNyVxncOcWp_3E_FjyGCV6Ma7JM_7HnU4kI6NGqwLR-5toCGswpwbniPgZd3bk4Qy0UGd7TFX5a1xgRe3g0adQk5dbJI-Q0y93K888neO2Zlv-aRINnrOLsR_NkIpjuemokA1iMBy9MjXWHqi0BJlXJhbjTmkjm-g9PwZj0Fn-udQYx6ldedi0gYEXVcWMBmjwLQHYJPmW9v-JzqjSpSlD8SsgpK-IZ184hSVImXY">
+                    </div>
+                    <div class="absolute inset-0 card-vignette z-10"></div>
+                    <div
+                        class="relative z-20 flex flex-col h-full justify-end items-center text-center px-4 pb-4 mt-auto">
+                        <h3
+                            class="text-white font-headline-xl font-extrabold text-[23px] leading-tight uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide mb-1">
+                            SELECT PROBLEM<br>STATEMENT
+                        </h3>
+                        <p
+                            class="text-white/90 text-[13px] font-body-md font-medium tracking-wide drop-shadow-sm mb-3.5">
+                            Feasibility &amp; Scope Analysis</p>
+                        <div
+                            class="inline-flex items-center justify-center gap-1.5 bg-white text-[#24389c] font-bold text-[13px] px-4 py-1.5 rounded-xl shadow-md border border-white/40 mb-3">
+                            <span class="material-symbols-outlined text-[17px] text-[#24389c]">schedule</span>
+                            <span class="">2 hr 30 min</span>
+                        </div>
+                    </div>
+                    <div
+                        class="relative z-20 w-full py-3 px-4 card-ribbon-vibrant text-white text-center flex items-center justify-center gap-2 border-t border-white/30 rounded-b-3xl">
+                        <span class="material-symbols-outlined text-[17px] text-white drop-shadow">auto_awesome</span>
+                        <span class="font-extrabold text-[13px] tracking-widest uppercase drop-shadow">FEATURED
+                            GUIDE</span>
+                        <span class="material-symbols-outlined text-[17px] text-white drop-shadow">auto_awesome</span>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div
+                    class="group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/20 bg-surface-container-lowest cursor-pointer flex flex-col h-[460px]">
+                    <div class="absolute inset-0 z-0">
+                        <img alt="How To Make The Synopsis &amp; Report"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8WLJ3wlpHYOLML8HBMvuhSa3y4q5FwHz_dhnBLYqhRXLtTKi1EwcaTOPa2sTtady2AIXfsCDHAu02OkgjdPlZ79RzxA4BWCgAMf0_xNckiwQHs4NFIthmvoK23RBW0EnIAA2TahBeqmgR1dCPPO0r06tlrDXCUO1Xa7w72CqobgG2dMCwP7exaYAWeFIcWeGB-tza0ZBhekq8N4OCMtpczru6JDygZAssIhCGr9UiUIFTGGGUw0--U3z-tjAIjCycedjsKmnSq7PZY-E">
+                    </div>
+                    <div class="absolute inset-0 card-vignette z-10"></div>
+                    <div
+                        class="relative z-20 flex flex-col h-full justify-end items-center text-center px-4 pb-4 mt-auto">
+                        <h3
+                            class="text-white font-headline-xl font-extrabold text-[23px] leading-tight uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] tracking-wide mb-1">
+                            SYNOPSIS &amp;<br>REPORT MAKING
+                        </h3>
+                        <p
+                            class="text-white/90 text-[13px] font-body-md font-medium tracking-wide drop-shadow-sm mb-3.5">
+                            Abstract, Methodology &amp; Documentation</p>
+                        <div
+                            class="inline-flex items-center justify-center gap-1.5 bg-white text-[#24389c] font-bold text-[13px] px-4 py-1.5 rounded-xl shadow-md border border-white/40 mb-3">
+                            <span class="material-symbols-outlined text-[17px] text-[#24389c]">schedule</span>
+                            <span class="">3 hr 15 min</span>
+                        </div>
+                    </div>
+                    <div
+                        class="relative z-20 w-full py-3 px-4 card-ribbon-vibrant text-white text-center flex items-center justify-center gap-2 border-t border-white/30 rounded-b-3xl">
+                        <span class="material-symbols-outlined text-[17px] text-white drop-shadow">auto_awesome</span>
+                        <span class="font-extrabold text-[13px] tracking-widest uppercase drop-shadow">NEWLY
+                            LAUNCHED</span>
+                        <span class="material-symbols-outlined text-[17px] text-white drop-shadow">auto_awesome</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Floating CTA Banner (Desktop) -->
+        <div
+            class="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 hidden md:flex items-center justify-between cta-banner rounded-full px-8 py-4 shadow-xl border border-surface-container-high w-[800px] max-w-[90vw]">
+            <p class="font-headline-md text-headline-md text-on-surface">Get access to Skills, Jobs, Community</p>
+            <button
+                class="bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg px-6 py-3 rounded-full transition-colors shadow-sm flex items-center gap-2">
+                Become A Member
+                <span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+            </button>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="dark:bg-secondary full-width mt-auto bg-surface-container-lowest">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-stack-lg">
+                <div><a class="font-headline-md text-headline-md text-on-secondary-container dark:text-on-secondary flex items-center gap-2 mb-stack-md"
+                        href="#"><span
+                            class="material-symbols-outlined text-on-secondary-container dark:text-on-secondary"
+                            data-icon="check_circle"
+                            style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>ELEVATE</a>
+                    <p class="font-body-md text-body-md text-on-secondary-container/80 dark:text-on-secondary/80">
+                        Empowering the next generation of digital leaders with expert-led, practical education.</p>
+                </div>
+                <div class="flex flex-col gap-stack-sm">
+                    <h4 class="font-label-lg text-label-lg text-on-secondary-container uppercase tracking-widest mb-2">
+                        COMPANY</h4><a
+                        class="font-label-md text-label-md text-on-secondary-container/80 hover:text-on-secondary-container transition-colors"
+                        href="#">About Us</a><a
+                        class="font-label-md text-label-md text-on-secondary-container/80 hover:text-on-secondary-container transition-colors"
+                        href="#">Contact</a><a
+                        class="font-label-md text-label-md text-on-secondary-container/80 hover:text-on-secondary-container transition-colors"
+                        href="#">Careers</a>
+                </div>
+                <div class="flex flex-col gap-stack-sm">
+                    <h4 class="font-label-lg text-label-lg text-on-secondary-container uppercase tracking-widest mb-2">
+                        LEGAL</h4><a
+                        class="font-label-md text-label-md text-on-secondary-container/80 hover:text-on-secondary-container transition-colors"
+                        href="#">Privacy Policy</a><a
+                        class="font-label-md text-label-md text-on-secondary-container/80 hover:text-on-secondary-container transition-colors"
+                        href="#">Terms of Service</a><a
+                        class="font-label-md text-label-md text-on-secondary-container/80 hover:text-on-secondary-container transition-colors"
+                        href="#">FAQ</a>
+                </div>
+                <div class="flex flex-col gap-stack-sm">
+                    <h4 class="font-label-lg text-label-lg text-on-secondary-container uppercase tracking-widest mb-2">
+                        SUBSCRIBE</h4>
+                    <div class="flex flex-col gap-2"><input
+                            class="w-full px-4 py-2 rounded border border-outline-variant bg-surface-container-lowest text-on-surface"
+                            placeholder="Enter your email" type="email"><button
+                            class="w-full bg-primary text-on-primary py-2 rounded font-label-lg hover:bg-primary-container transition-colors">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-on-secondary-container/10 pt-8 flex justify-between items-center">
+                <p class="font-body-md text-body-md text-on-secondary-container/80">© 2024 ELEVATE. All rights reserved.
+                </p><span class="material-symbols-outlined text-on-secondary-container cursor-pointer"
+                    data-icon="share">share</span>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
