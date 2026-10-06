@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import mainLogo from '../assets/main_logo.png';
+import Navbar from '../components/Navbar';
 
 const STATS = [
   { value: '50k+', label: 'Active Members' },
@@ -82,59 +84,10 @@ const Community = () => {
   return (
     <div className="bg-[#f7f9fc] text-[#191c1e] min-h-screen flex flex-col font-['Inter'] antialiased selection:bg-primary/20 selection:text-primary">
       {/* Top Navigation Bar */}
-      <header className="bg-white/95 backdrop-blur-md border-b border-[#c5c5d4]/40 sticky top-0 z-50">
-        <div className="max-w-[1280px] mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
-          <Link
-            to="/"
-            className="text-2xl font-extrabold text-[#24389c] flex items-center gap-2 font-['Manrope'] tracking-tight hover:opacity-90 transition-opacity"
-          >
-            <span
-              className="material-symbols-outlined text-[#24389c] text-3xl"
-              style={{ fontVariationSettings: '"FILL" 1' }}
-            >
-              check_circle
-            </span>
-            ELEVATE
-          </Link>
-
-          <nav className="hidden md:flex items-center gap-8 font-medium">
-            <Link
-              to="/courses"
-              className="text-[#454652] hover:text-[#24389c] text-sm transition-colors flex items-center gap-1"
-            >
-              Courses
-              <span className="material-symbols-outlined text-[18px]">expand_more</span>
-            </Link>
-            <Link
-              to="/community"
-              className="text-[#24389c] font-semibold text-sm transition-colors border-b-2 border-[#24389c] pb-0.5"
-            >
-              Community
-            </Link>
-            <a href="#" className="text-[#454652] hover:text-[#24389c] text-sm transition-colors">
-              Career Roadmaps
-            </a>
-            <a href="#" className="text-[#454652] hover:text-[#24389c] text-sm transition-colors">
-              Testimonials
-            </a>
-            <a href="#" className="text-[#454652] hover:text-[#24389c] text-sm transition-colors">
-              About Elevate
-            </a>
-          </nav>
-
-          <div className="flex items-center gap-4">
-            <button className="hidden md:block text-sm font-semibold text-[#454652] hover:text-[#24389c] transition-colors border border-[#c5c5d4] hover:border-[#24389c] px-8 py-2 rounded-full">
-              Login
-            </button>
-            <button className="md:hidden text-[#191c1e] p-2">
-              <span className="material-symbols-outlined">menu</span>
-            </button>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Main Content Area */}
-      <main className="flex-grow pb-28 relative">
+      <main className="flex-grow pb-28 pt-20 relative">
         {/* Hero Section */}
         <section className="relative pt-20 pb-24 overflow-hidden bg-[#f7f9fc]">
           <div className="max-w-[1280px] mx-auto px-6 md:px-12 text-center relative z-10">
@@ -415,12 +368,7 @@ const Community = () => {
                 to="/"
                 className="font-['Manrope'] text-2xl font-bold text-[#191c1e] flex items-center gap-2 mb-4"
               >
-                <span
-                  className="material-symbols-outlined text-[#24389c] text-3xl"
-                  style={{ fontVariationSettings: '"FILL" 1' }}
-                >
-                  check_circle
-                </span>
+                <img src={mainLogo} alt="ELEVATE Logo" className="h-10 w-auto object-contain" />
                 ELEVATE
               </Link>
               <p className="text-sm text-[#454652] leading-relaxed">
@@ -433,7 +381,7 @@ const Community = () => {
                 Company
               </h4>
               <ul className="space-y-3 text-sm text-[#454652]">
-                <li><a href="#" className="hover:text-[#24389c] transition-colors">About Us</a></li>
+                <li><Link to="/about-elevate" className="hover:text-[#24389c] transition-colors">About Us</Link></li>
                 <li><a href="#" className="hover:text-[#24389c] transition-colors">Contact</a></li>
                 <li><a href="#" className="hover:text-[#24389c] transition-colors">Careers</a></li>
               </ul>
@@ -468,7 +416,7 @@ const Community = () => {
           </div>
 
           <div className="border-t border-[#e0e3e6] pt-8 flex justify-between items-center text-xs md:text-sm text-[#454652]">
-            <p>© 2024 ELEVATE. All rights reserved.</p>
+            <p>© 2026 ELEVATE. All rights reserved.</p>
             <div className="flex items-center gap-4">
               <span className="material-symbols-outlined cursor-pointer hover:text-[#24389c] transition-colors">
                 share

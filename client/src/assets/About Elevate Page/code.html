@@ -1,0 +1,590 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>About ELEVATE - Growth Beyond Knowledge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#dce2f3",
+                        "surface-variant": "#e1e3e4",
+                        "surface-bright": "#f8f9fa",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#4050cc",
+                        "outline": "#757685",
+                        "surface-dim": "#d9dadb",
+                        "inverse-on-surface": "#f0f1f2",
+                        "secondary-fixed-dim": "#c0c6db",
+                        "error": "#ba1a1a",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed-dim": "#c0c7d6",
+                        "secondary": "#575e70",
+                        "on-surface": "#191c1d",
+                        "on-secondary-container": "#5c6274",
+                        "on-primary-container": "#d8daff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#141b2b",
+                        "surface-container": "#edeeef",
+                        "outline-variant": "#c6c5d6",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed-variant": "#404754",
+                        "secondary-fixed": "#dce2f7",
+                        "secondary-container": "#d9dff5",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#151c27",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e7e8e9",
+                        "primary": "#4353cf",
+                        "tertiary-container": "#5a616f",
+                        "on-surface-variant": "#454654",
+                        "on-secondary-fixed-variant": "#404758",
+                        "on-tertiary-container": "#d6dced",
+                        "surface-container-low": "#f3f4f5",
+                        "primary-container": "#4353cf",
+                        "on-background": "#191c1d",
+                        "on-primary-fixed-variant": "#2435b4",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#bcc2ff",
+                        "primary-fixed": "#dfe0ff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#424956",
+                        "on-primary-fixed": "#000b63",
+                        "surface": "#f8f9fa",
+                        "inverse-primary": "#bcc2ff",
+                        "inverse-surface": "#2e3132"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "1rem",
+                        "xs": "0.5rem",
+                        "base": "4px",
+                        "md": "1.5rem",
+                        "margin-desktop": "2.5rem",
+                        "gutter": "1.5rem",
+                        "xl": "3rem",
+                        "margin-mobile": "1rem",
+                        "lg": "2rem",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "label-caps": ["Geist"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "button": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "button": ["14px", { "lineHeight": "20px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        @media (min-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .bento-span-2 {
+                grid-column: span 2;
+            }
+            .bento-row-2 {
+                grid-row: span 2;
+            }
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased pt-20 font-['Hanken_Grotesk']">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-surface-variant/50">
+<div class="max-w-container-max mx-auto px-margin-desktop flex items-center justify-between h-20">
+<a class="font-headline-md text-headline-md font-bold tracking-widest uppercase text-primary flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-primary text-3xl">check_circle</span>
+                ELEVATE
+            </a>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-button text-button hover:opacity-80 duration-300 ease-in-out flex items-center gap-1" href="#">Courses <span class="material-symbols-outlined text-sm">expand_more</span></a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-button text-button hover:opacity-80 duration-300 ease-in-out" href="#">Community</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-button text-button hover:opacity-80 duration-300 ease-in-out" href="#">Career Roadmaps</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-button text-button hover:opacity-80 duration-300 ease-in-out" href="#">Testimonials</a>
+
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-button text-button hover:opacity-80 duration-300 ease-in-out" href="#">About Elevate</a>
+</div>
+<button class="bg-surface-container-lowest text-primary border border-outline-variant font-button text-button px-8 py-2 rounded-full hover:bg-surface-container-low transition-colors hidden md:block duration-300 ease-in-out shadow-sm">
+                Login
+            </button>
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-24 pb-32 overflow-hidden bg-surface-bright border-b border-surface-variant/30">
+<div class="absolute inset-0 z-0 opacity-10">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_#4353cf_0%,_transparent_50%)]"></div>
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_#4353cf_0%,_transparent_50%)]"></div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10 flex flex-col items-center text-center">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary font-label-caps text-label-caps mb-8 border border-primary/20">
+<span class="material-symbols-outlined text-sm">psychology</span>
+<span class="">OUR PHILOSOPHY</span>
+</div>
+<h1 class="font-display-lg text-display-lg mb-6 max-w-4xl tracking-tight text-on-surface">
+                    Growth Beyond <span class="text-primary">Knowledge</span>
+</h1>
+<p class="font-body-md text-body-md md:text-lg text-on-surface-variant max-w-2xl mb-12 leading-relaxed">
+                    ELEVATE is an Educator-Led Experiential Pedagogical Model designed for holistic student growth. We bridge the gap between theoretical knowledge and practical life skills.
+                </p>
+<div class="w-full max-w-5xl rounded-3xl overflow-hidden shadow-2xl border border-surface-variant aspect-video bg-surface">
+<img alt="Students collaborating" class="w-full h-full object-cover" data-alt="A bright, modern classroom setting where a diverse group of students is engaged in a collaborative hands-on project. The lighting is high-key and natural, creating a fresh, optimistic atmosphere. The aesthetic matches a clean, modern corporate saas light theme with subtle blue accents (#4353cf). The mood is focused, energetic, and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXBVj8BpNpNQlrP0qaq-c-bPUM2WF8j5a1PsWC2xbO2qexH4rqtr0nHQnG8S_UsDnaie0TSoJwrnQ3YGnWOgtB686MuucWzwJgpRkq6zD3pYnGZXMzp777Zz_wbMMc8ZVbFQ0rcho1LP1sWJr2jde1J6-QQzvjFUIvjw6szR-Bf0ye0vYpUSruW6JYRHt2XKgO6-EzGcRiM6Td2nOAKMroHphuq7TG4j12Q-L4bagx3_bQo-mzY0K5Ag">
+</div>
+</div>
+</section>
+<!-- The ELEVATE Difference (Comparison Section) -->
+<section class="py-24 bg-background border-b border-surface-variant/30">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="font-headline-lg text-headline-lg mb-4 text-on-surface">The ELEVATE Difference</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Moving beyond traditional learning management systems to active, experiential growth.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+<!-- Traditional LMS -->
+<div class="bg-surface-container-low border border-surface-variant rounded-3xl p-8 lg:p-12">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-2xl">history</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Traditional LMS</h3>
+</div>
+<ul class="space-y-6">
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-error mt-1 bg-error/10 rounded-full p-1 text-sm">close</span>
+<div>
+<h4 class="font-button text-button text-on-surface mb-1">Passive Content</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Focus on reading text and passive absorption.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-error mt-1 bg-error/10 rounded-full p-1 text-sm">close</span>
+<div>
+<h4 class="font-button text-button text-on-surface mb-1">Videos &amp; Quizzes</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Standardized testing and one-way lectures.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-error mt-1 bg-error/10 rounded-full p-1 text-sm">close</span>
+<div>
+<h4 class="font-button text-button text-on-surface mb-1">Static Certificates</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Generic proof of completion without context.</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- ELEVATE -->
+<div class="bg-primary/5 border border-primary/20 rounded-3xl p-8 lg:p-12 relative overflow-hidden shadow-lg shadow-primary/5">
+<div class="absolute -right-12 -top-12 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="flex items-center gap-4 mb-8 relative z-10">
+<div class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-2xl">rocket_launch</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">ELEVATE</h3>
+</div>
+<ul class="space-y-6 relative z-10">
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1 bg-primary/10 rounded-full p-1 text-sm border border-primary/20">check</span>
+<div>
+<h4 class="font-button text-button text-on-surface mb-1">Active Experiential Learning</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Immersive challenges requiring synthesis.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1 bg-primary/10 rounded-full p-1 text-sm border border-primary/20">check</span>
+<div>
+<h4 class="font-button text-button text-on-surface mb-1">Activity Challenges</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Real-world scenarios solving practical problems.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1 bg-primary/10 rounded-full p-1 text-sm border border-primary/20">check</span>
+<div>
+<h4 class="font-button text-button text-on-surface mb-1">Dynamic Growth Portfolios</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">A comprehensive artifact of individual evolution.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Mission Section -->
+<section class="py-24 bg-background">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-6 text-on-surface">The Mission</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                            At ELEVATE, our mission is to fundamentally transform how learning is internalized and applied. We recognize a critical gap in traditional education: the disconnect between acquiring technical knowledge and developing the essential real-world life skills necessary to thrive in a complex society.
+                        </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            We exist to close that gap. By immersing students in experiential challenges that require critical thinking, emotional intelligence, and adaptable problem-solving, we prepare them not just for tests, but for the unpredictable challenges of the modern professional landscape.
+                        </p>
+</div>
+<div class="relative">
+<div class="absolute inset-0 bg-primary/5 rounded-[2rem] transform translate-x-4 translate-y-4"></div>
+<div class="glass-card rounded-3xl p-8 md:p-12 relative z-10 border border-surface-variant/50 shadow-xl shadow-black/5 bg-white">
+<div class="flex items-center gap-4 mb-10">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
+<span class="material-symbols-outlined text-2xl">balance</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Closing the Gap</h3>
+</div>
+<div class="space-y-8">
+<div class="flex flex-col">
+<div class="flex justify-between mb-3 items-end">
+<span class="font-body-md font-semibold text-on-surface">Technical Knowledge</span>
+<span class="font-label-caps text-label-caps text-primary bg-primary/10 px-2 py-1 rounded-md">Current Focus</span>
+</div>
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden shadow-inner">
+<div class="h-full bg-primary/40 w-[85%] rounded-full relative">
+<div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-primary/30 to-transparent"></div>
+</div>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="flex justify-between mb-3 items-end">
+<span class="font-body-md font-semibold text-on-surface">Real-World Life Skills</span>
+<span class="font-label-caps text-label-caps text-error bg-error/10 px-2 py-1 rounded-md">The Deficit</span>
+</div>
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden shadow-inner">
+<div class="h-full bg-error/50 w-[35%] rounded-full relative">
+<div class="absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-error/30 to-transparent"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-surface-variant/50">
+<p class="font-body-sm text-body-sm italic text-on-surface-variant text-center">"Knowledge is power, but application is impact."</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Framework Section -->
+<section class="py-24 bg-surface-bright border-y border-surface-variant/30">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="font-headline-lg text-headline-lg mb-4 text-on-surface">The ELEVATE Framework</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">A structured, six-stage pedagogical journey designed to transform raw information into deeply internalized capability.</p>
+</div>
+<div class="bento-grid">
+<!-- Stage 1 -->
+<div class="bg-surface border border-surface-variant rounded-[2rem] p-8 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-high flex items-center justify-center text-on-surface mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-2xl">search</span>
+</div>
+<h3 class="font-button text-button text-primary mb-2 text-xs uppercase tracking-wider">Stage 01</h3>
+<h4 class="font-headline-md text-lg font-semibold text-on-surface mb-3">EXPLORE</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Diagnostic baseline assessment to understand starting proficiencies and contextual knowledge gaps.</p>
+</div>
+<!-- Stage 2 -->
+<div class="bg-surface border border-surface-variant rounded-[2rem] p-8 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-high flex items-center justify-center text-on-surface mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-2xl">menu_book</span>
+</div>
+<h3 class="font-button text-button text-primary mb-2 text-xs uppercase tracking-wider">Stage 02</h3>
+<h4 class="font-headline-md text-lg font-semibold text-on-surface mb-3">LEARN</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Focused learning capsules delivering high-yield theoretical frameworks and essential concepts.</p>
+</div>
+<!-- Stage 3 -->
+<div class="bg-surface border border-surface-variant rounded-[2rem] p-8 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-high flex items-center justify-center text-on-surface mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-2xl">science</span>
+</div>
+<h3 class="font-button text-button text-primary mb-2 text-xs uppercase tracking-wider">Stage 03</h3>
+<h4 class="font-headline-md text-lg font-semibold text-on-surface mb-3">EXPERIENCE</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Practical activity challenges simulating real-world scenarios to test comprehension through action.</p>
+</div>
+<!-- Stage 4 -->
+<div class="bg-surface border border-surface-variant rounded-[2rem] p-8 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-high flex items-center justify-center text-on-surface mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-2xl">fact_check</span>
+</div>
+<h3 class="font-button text-button text-primary mb-2 text-xs uppercase tracking-wider">Stage 04</h3>
+<h4 class="font-headline-md text-lg font-semibold text-on-surface mb-3">VALIDATE</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Multi-source feedback combining objective AI analysis with nuanced human expert review.</p>
+</div>
+<!-- Stage 5 -->
+<div class="bg-surface border border-surface-variant rounded-[2rem] p-8 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-high flex items-center justify-center text-on-surface mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-2xl">build</span>
+</div>
+<h3 class="font-button text-button text-primary mb-2 text-xs uppercase tracking-wider">Stage 05</h3>
+<h4 class="font-headline-md text-lg font-semibold text-on-surface mb-3">APPLY</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Execution of authentic real-world tasks requiring independent synthesis of learned materials.</p>
+</div>
+<!-- Stage 6 -->
+<div class="bg-primary rounded-[2rem] p-8 shadow-xl shadow-primary/20 text-on-primary relative overflow-hidden group hover:-translate-y-1 transition-all duration-300 border border-primary-container/30">
+<div class="absolute -right-12 -top-12 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+<div class="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-on-primary mb-6 border border-white/30 shadow-sm">
+<span class="material-symbols-outlined text-2xl">stars</span>
+</div>
+<h3 class="font-button text-button text-primary-fixed-dim mb-2 text-xs uppercase tracking-wider">Stage 06</h3>
+<h4 class="font-headline-md text-lg font-semibold mb-3">TRANSFORM</h4>
+<p class="font-body-sm text-body-sm text-on-primary-container leading-relaxed">Culminating in the Growth Portfolio artifact—a tangible demonstration of internalized mastery and personal evolution.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Measuring What Matters Section -->
+<section class="py-24 bg-background">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="font-headline-lg text-headline-lg mb-4 text-on-surface">Measuring What Matters</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">We track progress across three fundamental dimensions of development.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+<div class="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-surface-variant to-transparent -translate-y-1/2 z-0"></div>
+<div class="flex flex-col items-center text-center p-10 rounded-3xl bg-surface border border-surface-variant shadow-sm relative z-10 hover:shadow-md transition-shadow">
+<div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-6 border border-primary/20">
+<span class="material-symbols-outlined text-3xl">lightbulb</span>
+</div>
+<h3 class="font-headline-md text-xl font-bold text-on-surface mb-4">Know</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Conceptual Understanding assessed through rigorous diagnostics and knowledge checks.</p>
+</div>
+<div class="flex flex-col items-center text-center p-10 rounded-3xl bg-surface border border-surface-variant shadow-sm relative z-10 hover:shadow-md transition-shadow">
+<div class="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-6 border border-primary/20">
+<span class="material-symbols-outlined text-3xl">handyman</span>
+</div>
+<h3 class="font-headline-md text-xl font-bold text-on-surface mb-4">Do</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Demonstrated Performance via hands-on activity challenges and real-world application.</p>
+</div>
+<div class="flex flex-col items-center text-center p-10 rounded-3xl bg-primary text-on-primary shadow-xl shadow-primary/20 transform md:-translate-y-4 relative z-10 border border-primary-container/30">
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent opacity-50 rounded-3xl pointer-events-none"></div>
+<div class="w-16 h-16 rounded-full bg-white/20 text-white flex items-center justify-center mb-6 border border-white/30 backdrop-blur-sm">
+<span class="material-symbols-outlined text-3xl">psychology_alt</span>
+</div>
+<h3 class="font-headline-md text-xl font-bold mb-4">Become</h3>
+<p class="font-body-md text-body-md text-on-primary-container leading-relaxed">Measurable Behavioral Growth reflected over time within the holistic growth portfolio.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- The Result: Your Growth Portfolio -->
+<section class="py-24 bg-surface-bright border-t border-surface-variant/30">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="bg-surface border border-surface-variant rounded-[2.5rem] p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 shadow-xl shadow-black/5">
+<div class="flex-1 space-y-6">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary font-label-caps text-label-caps border border-primary/20">
+<span class="material-symbols-outlined text-sm">workspace_premium</span>
+<span class="">THE ULTIMATE ARTIFACT</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">The Result: Your Growth Portfolio</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            The Growth Portfolio is your primary credential artifact. It goes beyond a simple certificate by aggregating diagnostic results, activity submissions, detailed AI and educator feedback, and profound self-reflections.
+                        </p>
+<ul class="space-y-4 mt-8">
+<li class="flex items-center gap-4 font-body-md text-on-surface-variant bg-surface-container-low p-3 rounded-xl border border-surface-variant/50">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-1.5 rounded-lg">check_circle</span>
+                                Tangible evidence of skill development
+                            </li>
+<li class="flex items-center gap-4 font-body-md text-on-surface-variant bg-surface-container-low p-3 rounded-xl border border-surface-variant/50">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-1.5 rounded-lg">check_circle</span>
+                                Personalized timeline of evolution
+                            </li>
+<li class="flex items-center gap-4 font-body-md text-on-surface-variant bg-surface-container-low p-3 rounded-xl border border-surface-variant/50">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-1.5 rounded-lg">check_circle</span>
+                                Comprehensive synthesis of all learning stages
+                            </li>
+</ul>
+</div>
+<div class="flex-1 w-full max-w-md">
+<div class="aspect-[4/5] bg-surface-container-lowest rounded-3xl border border-surface-variant p-6 relative shadow-2xl shadow-black/10 overflow-hidden flex flex-col">
+<!-- Portfolio Mockup Header -->
+<div class="flex items-center justify-between border-b border-surface-variant pb-4 mb-6 relative z-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg shadow-sm">A</div>
+<div>
+<h4 class="font-button text-sm font-semibold text-on-surface leading-tight">Alex's Portfolio</h4>
+<p class="text-[10px] font-semibold tracking-wider text-on-surface-variant uppercase">ELEVATE Scholar</p>
+</div>
+</div>
+<div class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full border border-primary/20">
+        Verified
+    </div>
+</div>
+<!-- Portfolio Content -->
+<div class="space-y-4 relative z-10 flex-1 overflow-y-auto pr-2 custom-scrollbar">
+<!-- Evidence Item 1 -->
+<div class="bg-surface rounded-2xl border border-surface-variant p-4 hover:border-primary/30 transition-colors cursor-pointer group">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-xl">description</span>
+</div>
+<div class="flex-1">
+<h5 class="text-sm font-semibold text-on-surface mb-1">Strategic Communication Plan</h5>
+<div class="flex gap-2 mb-2">
+<span class="text-[10px] bg-surface-variant px-2 py-0.5 rounded text-on-surface-variant">Artifact</span>
+<span class="text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded">Mastered</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">comment</span>
+            Educator Feedback Attached
+        </div>
+</div>
+</div>
+</div>
+<!-- Evidence Item 2 -->
+<div class="bg-surface rounded-2xl border border-surface-variant p-4 hover:border-primary/30 transition-colors cursor-pointer group">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-xl">videocam</span>
+</div>
+<div class="flex-1">
+<h5 class="text-sm font-semibold text-on-surface mb-1">Negotiation Roleplay Video</h5>
+<div class="flex gap-2 mb-2">
+<span class="text-[10px] bg-surface-variant px-2 py-0.5 rounded text-on-surface-variant">Activity</span>
+<span class="text-[10px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded">Iterated</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">smart_toy</span>
+            AI Analysis Complete
+        </div>
+</div>
+</div>
+</div>
+<!-- Evidence Item 3 -->
+<div class="bg-surface rounded-2xl border border-surface-variant p-4 hover:border-primary/30 transition-colors cursor-pointer group">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-xl">psychology</span>
+</div>
+<div class="flex-1">
+<h5 class="text-sm font-semibold text-on-surface mb-1">Journey Self-Reflection</h5>
+<div class="flex gap-2 mb-2">
+<span class="text-[10px] bg-surface-variant px-2 py-0.5 rounded text-on-surface-variant">Reflection</span>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-2 italic">"Seeing my baseline compared to this final artifact really highlights..."</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Mockup Bottom Fade -->
+<div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-surface-container-lowest to-transparent pointer-events-none rounded-b-3xl"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-low border-t border-surface-variant/30 pt-16 pb-8">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16">
+<div class="md:col-span-4">
+<a class="font-headline-md text-headline-md font-bold tracking-widest uppercase text-primary flex items-center gap-2 mb-6" href="#">
+<span class="material-symbols-outlined text-primary text-2xl">check_circle</span>
+                    ELEVATE
+                </a>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed max-w-sm">
+                    Empowering the next generation of digital leaders with expert-led, practical education.
+                </p>
+</div>
+<div class="md:col-span-2">
+<h4 class="font-label-caps text-label-caps text-on-surface mb-6 uppercase tracking-wider font-bold">COMPANY</h4>
+<div class="flex flex-col gap-4">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">About Us</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Contact</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Careers</a>
+</div>
+</div>
+<div class="md:col-span-2">
+<h4 class="font-label-caps text-label-caps text-on-surface mb-6 uppercase tracking-wider font-bold">LEGAL</h4>
+<div class="flex flex-col gap-4">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">FAQ</a>
+</div>
+</div>
+<div class="md:col-span-4">
+<h4 class="font-label-caps text-label-caps text-on-surface mb-6 uppercase tracking-wider font-bold">SUBSCRIBE</h4>
+<form class="flex flex-col gap-3">
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent placeholder:text-on-surface-variant/50" placeholder="Enter your email" type="email">
+<button class="w-full bg-primary text-on-primary font-button text-button px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors duration-300 ease-in-out font-semibold" type="submit">
+                        Subscribe
+                    </button>
+</form>
+</div>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-surface-variant/50">
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 ELEVATE. All rights reserved.</p>
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200 mt-4 md:mt-0">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</footer>
+<style>
+    /* Custom Scrollbar for the mockup */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #d9dadb;
+        border-radius: 4px;
+    }
+    .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+        background: #c0c6db;
+    }
+</style>
+
+
+</body></html>

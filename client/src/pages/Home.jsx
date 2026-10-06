@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import mainBgImage from '../assets/main_bg_image.png';
+import mainLogo from '../assets/main_logo.png';
+import Navbar from '../components/Navbar';
 
 const Home = () => {
   const [isScrolledDown, setIsScrolledDown] = useState(false);
@@ -41,28 +43,7 @@ const Home = () => {
   return (
     <div className="bg-surface-container-lowest text-on-surface min-h-screen flex flex-col font-['Inter']">
       {/* TopNavBar */}
-      <nav className={`fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 text-on-surface transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isScrolledDown ? '-translate-y-full' : 'translate-y-0'}`}>
-        <div className="max-w-container-max mx-auto px-margin-desktop flex items-center justify-between h-20">
-          <Link to="/" className="font-headline-md text-headline-md font-bold tracking-tighter text-primary flex items-center gap-2">
-            <span className="material-symbols-outlined text-3xl">check_circle</span>
-            ELEVATE
-          </Link>
-          <div className="hidden md:flex items-center space-x-8 font-medium">
-            <Link to="/courses" className="hover:text-primary transition-colors flex items-center gap-1 text-on-surface">
-              Courses <span className="material-symbols-outlined text-sm">expand_more</span>
-            </Link>
-            <Link to="/community" className="hover:text-primary transition-colors text-on-surface">Community</Link>
-            <a className="hover:text-primary transition-colors text-on-surface" href="#">Career Roadmaps</a>
-            <a className="hover:text-primary transition-colors text-on-surface" href="#">Testimonials</a>
-            <a className="hover:text-primary transition-colors text-on-surface" href="#">About Elevate</a>
-          </div>
-          <div className="flex items-center gap-4">
-            <button className="border border-outline-variant text-on-surface hover:border-primary hover:text-primary font-button text-button px-8 py-2 rounded-full transition-all duration-300">
-              Login
-            </button>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       <main className="flex-grow pt-20 overflow-hidden">
         {/* Hero Section */}
@@ -91,11 +72,14 @@ const Home = () => {
               </motion.div>
               
               <motion.h1 variants={fadeUp} className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 leading-[1.15] tracking-tight font-['Playfair_Display']">
-                <span className="inline-block text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(180deg, #FFFFFF 0%, #FAF0DE 30%, #E2BA7F 70%, #BC8A48 100%)' }}>
-                  Become The Best
-                </span><br />
-                <span className="inline-block text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(180deg, #FFFFFF 0%, #FAF0DE 30%, #E2BA7F 70%, #BC8A48 100%)' }}>
-                  Version Of <span className="tracking-wide" style={{ letterSpacing: '0.04em' }}>YOU</span>
+                <span className="block pb-2 text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(180deg, #FFFFFF 0%, #FAF0DE 30%, #E2BA7F 70%, #BC8A48 100%)' }}>
+                  Elevate your career
+                </span>
+                <span className="block pb-2 text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(180deg, #FFFFFF 0%, #FAF0DE 30%, #E2BA7F 70%, #BC8A48 100%)' }}>
+                  with expert-led
+                </span>
+                <span className="block pb-2 text-transparent bg-clip-text tracking-wide" style={{ backgroundImage: 'linear-gradient(180deg, #FFFFFF 0%, #FAF0DE 30%, #E2BA7F 70%, #BC8A48 100%)', letterSpacing: '0.04em' }}>
+                  Learning
                 </span>
               </motion.h1>
               
@@ -223,8 +207,20 @@ const Home = () => {
         </section>
 
         {/* The Promise Section */}
-        <section className="bg-[#1f2355] text-white py-24">
-          <div className="max-w-container-max mx-auto px-margin-desktop">
+        <section className="bg-[#242a6a] text-white py-24 relative overflow-hidden">
+          {/* Background Decorative Shapes */}
+          <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/4 w-[400px] h-[600px] opacity-30 pointer-events-none">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full fill-[#31398c]">
+              <polygon points="0,0 40,30 10,50 60,80 0,100 30,80 -20,50 10,30" />
+            </svg>
+          </div>
+          <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4 w-[500px] h-[700px] opacity-30 pointer-events-none">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full fill-[#31398c]">
+              <polygon points="100,0 60,30 90,50 40,80 100,100 70,80 120,50 90,30" />
+            </svg>
+          </div>
+
+          <div className="max-w-container-max mx-auto px-margin-desktop relative z-10">
             <motion.div 
               className="text-center mb-16 flex flex-col items-center"
               initial="hidden"
@@ -232,9 +228,9 @@ const Home = () => {
               viewport={{ once: true, margin: "-100px" }}
               variants={staggerContainer}
             >
-              <motion.div variants={fadeUp} className="bg-white/10 rounded-full px-4 py-1 flex items-center gap-2 mb-6 border border-white/20">
-                <span className="material-symbols-outlined text-sm">verified_user</span>
-                <span className="text-sm font-semibold tracking-wide uppercase">100% Risk Free Investment</span>
+              <motion.div variants={fadeUp} className="bg-transparent rounded-full px-4 py-1 flex items-center gap-2 mb-6 border border-white/20">
+                <span className="material-symbols-outlined text-sm text-[#d8daff]">verified_user</span>
+                <span className="text-sm font-semibold tracking-wide uppercase text-white/90">100% Risk Free Investment</span>
               </motion.div>
               <motion.h2 variants={fadeUp} className="font-headline-lg text-4xl md:text-5xl font-bold">The ELEVATE Promise</motion.h2>
             </motion.div>
@@ -247,33 +243,33 @@ const Home = () => {
               variants={staggerContainer}
             >
               {/* Promise 1 */}
-              <motion.div variants={fadeUp} className="bg-white/5 border border-white/10 rounded-3xl p-8 flex items-center gap-8 hover:bg-white/10 transition-colors">
-                <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <span className="material-symbols-outlined text-3xl text-[#8b9cff]">all_inclusive</span>
+              <motion.div variants={fadeUp} className="bg-[#2d3480] rounded-3xl p-8 flex flex-col md:flex-row md:items-center gap-6 md:gap-8 hover:bg-[#32398a] transition-colors shadow-lg">
+                <div className="w-16 h-16 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center flex-shrink-0">
+                  <span className="material-symbols-outlined text-3xl text-white">all_inclusive</span>
                 </div>
                 <div>
-                  <h3 className="font-headline-md text-2xl font-bold mb-2">Pay Once. Full Access.</h3>
-                  <p className="text-white/70 font-body-md">Unlock all courses, entire community and all jobs with one yearly subscription.</p>
+                  <h3 className="font-headline-md text-xl md:text-2xl font-bold mb-2 text-white">Pay Once. Full Access.</h3>
+                  <p className="text-white/80 font-body-md text-sm md:text-base leading-relaxed">Unlock all courses, entire community and all jobs with one yearly subscription.</p>
                 </div>
               </motion.div>
               {/* Promise 2 */}
-              <motion.div variants={fadeUp} className="bg-white/5 border border-white/10 rounded-3xl p-8 flex items-center gap-8 hover:bg-white/10 transition-colors">
-                <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <span className="material-symbols-outlined text-3xl text-[#8b9cff]">money_off</span>
+              <motion.div variants={fadeUp} className="bg-[#2d3480] rounded-3xl p-8 flex flex-col md:flex-row md:items-center gap-6 md:gap-8 hover:bg-[#32398a] transition-colors shadow-lg">
+                <div className="w-16 h-16 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center flex-shrink-0">
+                  <span className="material-symbols-outlined text-3xl text-white">money_off</span>
                 </div>
                 <div>
-                  <h3 className="font-headline-md text-2xl font-bold mb-2">No Upsells. No Surprises.</h3>
-                  <p className="text-white/70 font-body-md">What you see is what you pay, no hidden costs.</p>
+                  <h3 className="font-headline-md text-xl md:text-2xl font-bold mb-2 text-white">No Upsells. No Surprises.</h3>
+                  <p className="text-white/80 font-body-md text-sm md:text-base leading-relaxed">What you see is what you pay, no hidden costs.</p>
                 </div>
               </motion.div>
               {/* Promise 3 */}
-              <motion.div variants={fadeUp} className="bg-white/5 border border-white/10 rounded-3xl p-8 flex items-center gap-8 hover:bg-white/10 transition-colors">
-                <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <span className="material-symbols-outlined text-3xl text-[#8b9cff]">currency_exchange</span>
+              <motion.div variants={fadeUp} className="bg-[#2d3480] rounded-3xl p-8 flex flex-col md:flex-row md:items-center gap-6 md:gap-8 hover:bg-[#32398a] transition-colors shadow-lg">
+                <div className="w-16 h-16 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center flex-shrink-0">
+                  <span className="material-symbols-outlined text-3xl text-white">currency_exchange</span>
                 </div>
                 <div>
-                  <h3 className="font-headline-md text-2xl font-bold mb-2">Full Refund. No Questions Asked.</h3>
-                  <p className="text-white/70 font-body-md">Get your money back if you choose to cancel the subscription in 14 days.</p>
+                  <h3 className="font-headline-md text-xl md:text-2xl font-bold mb-2 text-white">Full Refund. No Questions Asked.</h3>
+                  <p className="text-white/80 font-body-md text-sm md:text-base leading-relaxed">Get your money back if you choose to cancel the subscription in 14 days.</p>
                 </div>
               </motion.div>
             </motion.div>
@@ -286,7 +282,7 @@ const Home = () => {
         <div className="max-w-container-max mx-auto px-margin-desktop py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
           <div>
             <a className="font-headline-md text-headline-md text-on-surface mb-6 flex items-center gap-2 font-bold tracking-tighter" href="#">
-              <span className="material-symbols-outlined text-3xl text-primary">check_circle</span>
+              <img src={mainLogo} alt="ELEVATE Logo" className="h-10 w-auto object-contain" />
               ELEVATE
             </a>
             <p className="font-body-md text-body-md text-on-surface-variant mb-6 max-w-xs">
@@ -297,7 +293,7 @@ const Home = () => {
             <div>
               <h4 className="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-widest font-semibold">Company</h4>
               <ul className="space-y-4 font-body-md text-body-md text-on-surface-variant">
-                <li><a className="hover:text-primary transition-colors duration-200" href="#">About Us</a></li>
+                <li><Link to="/about-elevate" className="hover:text-primary transition-colors duration-200">About Us</Link></li>
                 <li><a className="hover:text-primary transition-colors duration-200" href="#">Contact</a></li>
                 <li><a className="hover:text-primary transition-colors duration-200" href="#">Careers</a></li>
               </ul>
@@ -326,7 +322,7 @@ const Home = () => {
           </div>
           
           <div className="col-span-1 md:col-span-4 mt-12 pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center text-sm font-body-md text-on-surface-variant">
-            <p>© 2024 ELEVATE. All rights reserved.</p>
+            <p>© 2026 ELEVATE. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a className="hover:text-primary transition-colors" href="#">
                 <span className="material-symbols-outlined">share</span>
