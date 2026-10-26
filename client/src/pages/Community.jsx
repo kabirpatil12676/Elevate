@@ -117,12 +117,14 @@ const Community = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex justify-center"
             >
+            <Link to="/register">
               <button className="bg-[#24389c] hover:bg-[#3f51b5] text-white font-semibold text-base px-8 py-4 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center gap-2 group">
                 Become a Member
                 <span className="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform" style={{ fontVariationSettings: "'FILL' 1" }}>
                   arrow_forward
                 </span>
               </button>
+            </Link>
             </motion.div>
           </div>
 
@@ -349,12 +351,14 @@ const Community = () => {
             <p className="font-['Manrope'] font-bold text-sm md:text-lg text-[#191c1e]">
               Get access to Skills, Jobs, Community
             </p>
-            <button className="bg-[#24389c] hover:bg-[#3f51b5] text-white font-semibold text-xs md:text-sm px-5 md:px-6 py-2.5 md:py-3 rounded-full transition-all shadow-md flex items-center gap-2 flex-shrink-0 group">
-              Become An ELEVATE Member
-              <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">
-                arrow_forward
-              </span>
-            </button>
+            <Link to="/register">
+              <button className="bg-[#24389c] hover:bg-[#3f51b5] text-white font-semibold text-xs md:text-sm px-5 md:px-6 py-2.5 md:py-3 rounded-full transition-all shadow-md flex items-center gap-2 flex-shrink-0 group">
+                Become An ELEVATE Member
+                <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">
+                  arrow_forward
+                </span>
+              </button>
+            </Link>
           </motion.aside>
         </div>
       </main>

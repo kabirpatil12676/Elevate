@@ -7,6 +7,7 @@
  * Run with: npm run db:init
  */
 
+import pg from 'pg';
 import pool from '../config/db.js';
 import dotenv from 'dotenv';
 
@@ -68,6 +69,8 @@ const schema = `
     skill_domain  VARCHAR(255),
     difficulty    VARCHAR(50),
     duration_hours DECIMAL(5,1),
+    price         NUMERIC(10,2) NOT NULL DEFAULT 0.00 CHECK (price >= 0),
+    badge         VARCHAR(100),
     status        journey_status DEFAULT 'draft',
     created_by    UUID REFERENCES users(id) ON DELETE SET NULL,
     created_at    TIMESTAMPTZ DEFAULT NOW(),
@@ -141,6 +144,30 @@ const schema = `
     completed_at  TIMESTAMPTZ,
     UNIQUE(user_id, journey_id)
   );
+
+  -- ════════════════════════════════════════════════════════
+  -- 7B. PAYMENT ORDERS (Razorpay payment foundation)
+  -- ════════════════════════════════════════════════════════
+  CREATE TABLE IF NOT EXISTS payment_orders (
+    id                  UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    user_id             UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    journey_id          UUID NOT NULL REFERENCES journeys(id) ON DELETE RESTRICT,
+    razorpay_order_id   VARCHAR(255) UNIQUE NOT NULL,
+    amount_paise        INTEGER NOT NULL CHECK (amount_paise >= 0),
+    currency            VARCHAR(10) NOT NULL DEFAULT 'INR',
+    status              VARCHAR(50) NOT NULL DEFAULT 'created'
+                        CHECK (status IN ('created', 'attempted', 'paid', 'failed', 'refunded')),
+    razorpay_payment_id VARCHAR(255) UNIQUE,
+    razorpay_signature  TEXT,
+    verified_at         TIMESTAMPTZ,
+    captured_at         TIMESTAMPTZ,
+    created_at          TIMESTAMPTZ DEFAULT NOW(),
+    updated_at          TIMESTAMPTZ DEFAULT NOW()
+  );
+
+  CREATE INDEX IF NOT EXISTS idx_payment_orders_user_id ON payment_orders(user_id);
+  CREATE INDEX IF NOT EXISTS idx_payment_orders_journey_id ON payment_orders(journey_id);
+  CREATE INDEX IF NOT EXISTS idx_payment_orders_status ON payment_orders(status);
 
   -- ════════════════════════════════════════════════════════
   -- 8. LEARNER GROWTH PROFILES (diagnostic results)
@@ -238,6 +265,33 @@ const schema = `
 
 async function initDatabase() {
   try {
+    const dbName = process.env.DB_NAME || 'elevate_db';
+    console.log(`🔧 Checking PostgreSQL database "${dbName}"...`);
+
+    // Ensure database exists by connecting to default maintenance database
+    const rootClient = new pg.Client({
+      host: process.env.DB_HOST || 'localhost',
+      port: parseInt(process.env.DB_PORT) || 5432,
+      user: process.env.DB_USER || 'postgres',
+      password: process.env.DB_PASSWORD || '',
+      database: 'postgres',
+    });
+
+    await rootClient.connect();
+    const dbCheck = await rootClient.query(
+      'SELECT 1 FROM pg_database WHERE datname = $1',
+      [dbName]
+    );
+
+    if (dbCheck.rows.length === 0) {
+      console.log(`📦 Database "${dbName}" not found. Creating...`);
+      await rootClient.query(`CREATE DATABASE "${dbName}"`);
+      console.log(`✅ Database "${dbName}" created successfully.`);
+    } else {
+      console.log(`✅ Database "${dbName}" already exists.`);
+    }
+    await rootClient.end();
+
     console.log('🔧 Initializing ELEVATE database schema...\n');
     await pool.query(schema);
     console.log('✅ Database schema created successfully!');

@@ -12,17 +12,33 @@ import feedbackRoutes from './routes/feedback.routes.js';
 import portfolioRoutes from './routes/portfolio.routes.js';
 import adminRoutes from './routes/admin.routes.js';
 import diagnosticRoutes from './routes/diagnostic.routes.js';
+import paymentRoutes from './routes/payment.routes.js';
+import educatorRoutes from './routes/educator.routes.js';
+import { query } from './config/db.js';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// ── Middleware ──────────────────────────────────────────────
+// ── Webhook must receive raw body BEFORE express.json() parses it ────────────
+// Only the /api/payments/webhook endpoint needs express.raw(); all others use JSON.
+import { handleWebhook } from './controllers/payment.controller.js';
+
+// CORS must apply to all routes including the webhook
 app.use(cors({
   origin: process.env.CLIENT_URL || 'http://localhost:5173',
   credentials: true,
 }));
+
+app.post(
+  '/api/payments/webhook',
+  express.raw({ type: 'application/json' }),
+  (req, _res, next) => { req.rawBody = req.body; next(); },
+  handleWebhook,
+);
+
+// ── JSON + URL-encoded body parsing (all other routes) ───────────────────────
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -38,10 +54,24 @@ app.use('/api/feedback',    feedbackRoutes);
 app.use('/api/portfolio',   portfolioRoutes);
 app.use('/api/admin',       adminRoutes);
 app.use('/api/diagnostic',  diagnosticRoutes);
+app.use('/api/payments',    paymentRoutes);
+app.use('/api/educator',    educatorRoutes);
 
 // ── Health Check ───────────────────────────────────────────
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', platform: 'ELEVATE', timestamp: new Date().toISOString() });
+app.get('/api/health', async (req, res) => {
+  let dbStatus = 'disconnected';
+  try {
+    await query('SELECT 1');
+    dbStatus = 'connected';
+  } catch (err) {
+    dbStatus = 'disconnected';
+  }
+  res.json({
+    status: 'ok',
+    platform: 'ELEVATE',
+    database: dbStatus,
+    timestamp: new Date().toISOString(),
+  });
 });
 
 // ── Global Error Handler ───────────────────────────────────
@@ -55,9 +85,19 @@ app.use((err, req, res, next) => {
 });
 
 // ── Start ──────────────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`\n🚀 ELEVATE Server running on http://localhost:${PORT}`);
-  console.log(`   Environment: ${process.env.NODE_ENV || 'development'}\n`);
-});
+import { fileURLToPath } from 'url';
+
+const isMainModule = process.argv[1] && (
+  fileURLToPath(import.meta.url) === process.argv[1] ||
+  process.argv[1].endsWith('src\\index.js') ||
+  process.argv[1].endsWith('src/index.js')
+);
+
+if (isMainModule) {
+  app.listen(PORT, () => {
+    console.log(`\n🚀 ELEVATE Server running on http://localhost:${PORT}`);
+    console.log(`   Environment: ${process.env.NODE_ENV || 'development'}\n`);
+  });
+}
 
 export default app;

@@ -87,9 +87,11 @@ const Home = () => {
                 Acquire practical, high-demand skills from industry leaders. The smartest membership for the smartest people.
               </motion.p>
               
-              <motion.button variants={fadeUp} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="bg-[#4353cf] hover:bg-[#4353cf]/90 text-white font-button text-base md:text-lg px-8 py-3 rounded-full w-fit transition-colors duration-300 shadow-lg mb-10">
-                Become An ELEVATE Member
-              </motion.button>
+              <Link to="/register" className="inline-block w-fit">
+                <motion.button variants={fadeUp} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="bg-[#4353cf] hover:bg-[#4353cf]/90 text-white font-button text-base md:text-lg px-8 py-3 rounded-full w-fit transition-colors duration-300 shadow-lg mb-10">
+                  Become An ELEVATE Member
+                </motion.button>
+              </Link>
               
               <motion.div variants={fadeUp} className="flex flex-wrap gap-6 text-sm font-medium">
                 <div className="flex items-center gap-2"><span className="material-symbols-outlined text-white">diamond</span>High-Quality Courses</div>
@@ -124,9 +126,11 @@ const Home = () => {
               </div>
             </motion.div>
             
-            <motion.button variants={fadeUp} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="bg-[#4353cf] hover:bg-[#4353cf]/90 text-white font-button text-lg px-8 py-4 rounded-full transition-colors duration-300 shadow-md">
-              Become An ELEVATE Member
-            </motion.button>
+            <Link to="/register" className="inline-block">
+              <motion.button variants={fadeUp} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="bg-[#4353cf] hover:bg-[#4353cf]/90 text-white font-button text-lg px-8 py-4 rounded-full transition-colors duration-300 shadow-md">
+                Become An ELEVATE Member
+              </motion.button>
+            </Link>
           </motion.div>
         </section>
 
@@ -194,9 +198,11 @@ const Home = () => {
             >
               <div className="p-10 relative z-10 md:w-3/5 flex flex-col justify-center">
                 <h3 className="font-headline-lg text-3xl md:text-4xl font-bold mb-8">Get Access to Skills, Community and Jobs For A Full Year!</h3>
-                <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="bg-white text-[#4353cf] hover:bg-surface-container-lowest font-button text-lg px-8 py-4 rounded-full transition-colors duration-300 shadow-md w-fit">
-                  Become An ELEVATE Member
-                </motion.button>
+                <Link to="/register" className="inline-block w-fit">
+                  <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="bg-white text-[#4353cf] hover:bg-surface-container-lowest font-button text-lg px-8 py-4 rounded-full transition-colors duration-300 shadow-md w-fit">
+                    Become An ELEVATE Member
+                  </motion.button>
+                </Link>
               </div>
               <div className="relative md:w-2/5 min-h-[200px]">
                 <img alt="Team" className="absolute inset-0 w-full h-full object-cover opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh5bf8CFOysGIz08JKfg0OVBFp9s1v-qn8-1Q7UqZ6KVADu-vjJRumJO0XsasTSCwqB3M8q2w31nksraOKwAGP5e4P-Q0wA_OqogFTIy6ilLBg775FyDMmlAziTEfrNM7rFCntAsjL7bq3kS68q2xaJ_S9xObYGVu9KPhpvQawarjuiDarZ6kfbfqiHNJcoWYslKpjtr6Z_5QXTakc4IMlQeiIVnuq8HKLPhjFOgefx8U1-z_makA-iQ" />
