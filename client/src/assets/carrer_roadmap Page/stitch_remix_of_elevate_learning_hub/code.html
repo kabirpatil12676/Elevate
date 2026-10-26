@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ELEVATE — Prof. Dipali</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "primary": "#b4c5ff",
+          "primary-fixed": "#dbe1ff",
+          "on-surface": "#f7d8fe",
+          "on-surface-variant": "#c3c6d7",
+          "outline": "#8d90a0",
+          "surface-container-high": "#37223f",
+          "on-primary-container": "#eeefff",
+          "outline-variant": "#434655",
+          "surface-container-lowest": "#190621",
+          "accent-glow-cyan": "#38bdf8",
+          "surface-container-low": "#27142f",
+          "surface": "#1e0b26",
+          "secondary-fixed": "#e9ddff",
+          "primary-fixed-dim": "#b4c5ff",
+          "on-secondary-fixed-variant": "#5516be",
+          "secondary-container": "#571bc1",
+          "secondary": "#d0bcff",
+          "on-primary": "#002a78",
+          "deep-navy-bg": "#080311",
+          "on-primary-fixed": "#00174b",
+          "on-tertiary-fixed": "#001e2c",
+          "surface-container": "#2b1833",
+          "inverse-on-surface": "#3d2945",
+          "on-tertiary-fixed-variant": "#004c69",
+          "tertiary": "#7bd0ff",
+          "on-secondary-fixed": "#23005c",
+          "inverse-surface": "#f7d8fe",
+          "surface-tint": "#b4c5ff",
+          "border-dark-hairline": "#1f102e",
+          "error-container": "#93000a",
+          "surface-dim": "#1e0b26",
+          "surface-card-light": "#FFFFFF",
+          "on-secondary-container": "#c4abff",
+          "on-error-container": "#ffdad6",
+          "on-error": "#690005",
+          "surface-variant": "#422d4a",
+          "surface-bright": "#47314f",
+          "on-secondary": "#3c0091",
+          "on-primary-fixed-variant": "#003ea8",
+          "tertiary-container": "#00759f",
+          "secondary-fixed-dim": "#d0bcff",
+          "tertiary-fixed-dim": "#7bd0ff",
+          "on-background": "#f7d8fe",
+          "midnight-violet": "#0b0314",
+          "surface-card-light-text": "#090A1A",
+          "on-tertiary": "#00354a",
+          "error": "#ffb4ab",
+          "background": "#0b0314",
+          "on-tertiary-container": "#e1f2ff",
+          "tertiary-fixed": "#c4e7ff",
+          "inverse-primary": "#0053db",
+          "surface-dark-subtle": "#140722",
+          "surface-container-highest": "#422d4a",
+          "primary-container": "#2563eb"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-xl": "2.5rem",
+          "space-md": "1rem",
+          "margin": "3rem",
+          "gutter-mobile": "1rem",
+          "margin-mobile": "1.25rem",
+          "space-lg": "1.5rem",
+          "space-2xl": "4rem",
+          "space-xs": "0.25rem",
+          "gutter": "1.5rem",
+          "space-sm": "0.5rem"
+        },
+        "fontFamily": {
+          "label-xs": ["Montserrat", "sans-serif"],
+          "body-lg": ["Manrope", "sans-serif"],
+          "body-md": ["Manrope", "sans-serif"],
+          "headline-lg-mobile": ["Montserrat", "sans-serif"],
+          "headline-md": ["Montserrat", "sans-serif"],
+          "label-lg": ["Manrope", "sans-serif"],
+          "display": ["Montserrat", "sans-serif"],
+          "headline-lg": ["Montserrat", "sans-serif"],
+          "body-sm": ["Manrope", "sans-serif"],
+          "label-md": ["Manrope", "sans-serif"],
+          "display-mobile": ["Montserrat", "sans-serif"],
+          "title": ["Manrope", "sans-serif"],
+          "headline-sm": ["Montserrat", "sans-serif"]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  @layer base {
+    html {
+      color-scheme: dark;
+      scroll-behavior: smooth;
+    }
+    body {
+      min-height: 100vh;
+      background-color: #0b0314;
+      color: #f7d8fe;
+      overscroll-behavior-y: none;
+    }
+  }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  @keyframes polygonFloat {
+    0%, 100% {
+      transform: rotate(-10deg) scale(1) translateY(0px);
+    }
+    50% {
+      transform: rotate(-7deg) scale(1.03) translateY(-8px);
+    }
+  }
+  .animate-polygon-float {
+    animation: polygonFloat 8s ease-in-out infinite;
+  }
+</style>
+<meta content="web_standard" name="shell-type"/>
+</head>
+<body class="bg-midnight-violet text-on-surface font-body-md antialiased selection:bg-secondary-container selection:text-white">
+<!-- PERSISTENT EDITORIAL HEADER (join2manish minimalist dark aesthetic with ELEVATE navigation) -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-[#090211]/90 backdrop-blur-md border-b border-[#210c33]">
+<div class="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
+<!-- Brand Mark -->
+<a class="flex items-center gap-2 group" href="#">
+<span class="font-display text-2xl md:text-3xl font-extrabold tracking-tight text-white group-hover:text-primary transition-colors">
+      ELEVATE<span class="text-pink-500">.</span>
+</span>
+</a>
+<!-- Minimalist Desktop Navigation -->
+<nav class="hidden lg:flex items-center space-x-8 text-[15px] font-medium tracking-wide">
+<a aria-current="page" class="text-white border-b-2 border-white pb-1 font-semibold" data-path="home" href="#">Home</a>
+<a class="text-gray-300 hover:text-white transition-colors duration-200" data-path="courses" href="#">Courses</a>
+<a class="text-gray-300 hover:text-white transition-colors duration-200" data-path="community" href="#">Community</a>
+<a class="text-gray-300 hover:text-white transition-colors duration-200" data-path="career-roadmaps" href="#">Career Roadmaps</a>
+<a class="text-gray-300 hover:text-white transition-colors duration-200" data-path="testimonials" href="#testimonials">Testimonials</a>
+<a class="text-gray-300 hover:text-white transition-colors duration-200" data-path="about" href="#about">About</a>
+</nav>
+<!-- Right Actions: Schedule / Login -->
+<div class="flex items-center space-x-4">
+<a class="hidden sm:inline-flex items-center text-sm font-semibold tracking-wide text-white hover:text-pink-400 transition-colors" href="#consultation">
+      Schedule a Call
+    </a>
+<button class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-sm font-semibold transition-all backdrop-blur-sm">
+      Login
+    </button>
+<button aria-label="Toggle Menu" class="lg:hidden text-gray-300 hover:text-white p-2">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="min-h-screen">
+<div class="flex flex-col w-full">
+<!-- HERO SECTION: 1:1 match to join2manish.com composition (Atmospheric Aubergine, Giant Typography, Magenta Polygon, Cutout Portrait & Slider Controls) -->
+<section class="relative w-full min-h-[92vh] flex items-center bg-gradient-to-b from-[#090211] via-[#120520] to-[#0a0312] overflow-hidden pt-20 border-b border-[#210c33]" id="hero">
+<!-- Atmospheric Ambient Background Light -->
+<div class="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-purple-900/25 rounded-full blur-[140px] pointer-events-none"></div>
+<div class="absolute bottom-10 right-1/4 w-[450px] h-[450px] bg-pink-900/20 rounded-full blur-[160px] pointer-events-none"></div>
+<!-- Giant Brand Name Watermark in Top Left (Manish Pandey style branding) -->
+<div class="absolute top-28 left-6 md:left-12 z-20 pointer-events-none">
+<p class="font-display font-extrabold text-3xl md:text-4xl text-white tracking-tight leading-none">
+      Prof. Dipali<span class="text-pink-500">.</span>
+</p>
+</div>
+<div class="max-w-7xl mx-auto w-full px-6 md:px-12 relative z-10 py-12 md:py-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 items-center min-h-[640px] relative">
+<!-- Left Column: Giant Editorial Headline -->
+<div class="lg:col-span-6 z-20 pt-16 lg:pt-0">
+<h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[76px] font-extrabold text-white tracking-tight leading-[1.04] transition-opacity duration-300" id="heroTitle">
+          Defining<br/>
+          India's Digital<br/>
+          Space.
+        </h1>
+<p class="font-display text-xs md:text-sm font-semibold tracking-widest uppercase text-pink-400/90 mt-6 flex items-center gap-2" id="heroSubline">
+<span class="w-8 h-[2px] bg-pink-500 inline-block"></span>
+          Academic Innovator &amp; Strategic Tech Mentor
+        </p>
+<!-- Bottom Location / Tag ticker -->
+<div class="mt-10 flex items-center gap-2 text-xs font-semibold tracking-wider text-gray-400">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+<span>NEW DELHI / MUMBAI / GLOBAL EDTECH</span>
+</div>
+</div>
+<!-- Center / Right: Dynamic Diagonal Magenta Polygon + Transparent Cutout Portrait -->
+<div class="lg:col-span-6 relative flex items-center justify-center min-h-[520px] md:min-h-[680px]">
+<!-- Glowing Triangular / Polygonal Accent from screenshot https://lh3.googleusercontent.com/aida-public/AB6AXuD6eaBeNcf3t5u_D6qtd5MA7Q60DCu4unN84_cTnoSpluXHKStm4JgODgXLwZiLdhD0Q8Qaq3I7m-FjD08A5VFHBUlg58PQ1zQO0_Ob636Zt9u58b3avT2pnSgv2r2paMFFawul_D8YIKEaQlLSBooA8xTL9Jglmp0-TK6GJbFlhLzyNDOxwSSuZqD9ibOMPIo8bGysGL7KQi3QruX2y_mZ4uz9fG1n_MegY47Xd0-4wCJVSgB2AfGW7Mx-2MYfu9f0Vw -->
+<div class="absolute w-[360px] sm:w-[460px] md:w-[540px] h-[360px] sm:h-[460px] md:h-[540px] pointer-events-none z-0 animate-polygon-float top-8 md:top-4 right-2 md:right-8">
+<svg class="w-full h-full filter drop-shadow-[0_0_60px_rgba(236,72,153,0.35)]" viewbox="0 0 500 500">
+<defs>
+<lineargradient id="magentaPolyGrad" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#b43feb"></stop>
+<stop offset="50%" stop-color="#db2777"></stop>
+<stop offset="100%" stop-color="#f43f5e"></stop>
+</lineargradient>
+</defs>
+<!-- Bold dynamic triangular wedge shape matching reference -->
+<polygon fill="url(#magentaPolyGrad)" points="120,40 470,220 280,480"></polygon>
+</svg>
+</div>
+<!-- Atmospheric Back Glow on Head -->
+<div class="absolute w-72 h-72 rounded-full bg-purple-600/30 blur-3xl z-0"></div>
+<!-- Portrait Cutout Image with seamless bottom gradient & dark-lit color tone -->
+<div class="relative z-10 w-full max-w-[480px] flex items-end justify-center pt-8">
+<div class="relative overflow-hidden w-full flex justify-center">
+<!-- Cutout Image https://lh3.googleusercontent.com/aida/AEtjO1VD8oBkOhB91ijm4PtOOIJWNTEbKs0gkC6Jt-1N1v2E-oK8QxZZ7I5gapZab6_1LRRQCdIwn_HB9Ejpf4TwQd5IpspY6fzh7uLqzB_H4eZxOkkAgE9uh1niAm4Q02W59OA5DjdPsN360d2c0nvAWYqqmjz3LxxUxAUB3WkemkJhq2XS3_Nq679597ejdW4ASAgoioR25FByOp-8DlK1yHJTP4ldHPp_HbcG63bs5cqjlO24qSUH8szCGl1nhPm0AJocXLgr47R9pg -->
+<img alt="Prof. Dipali — Academic Mentor and Technology Visionary" class="w-full max-w-[440px] md:max-w-[490px] h-auto object-contain object-bottom filter contrast-105 brightness-95 saturate-[0.9] drop-shadow-[0_25px_35px_rgba(0,0,0,0.85)]" id="heroImage" src="https://lh3.googleusercontent.com/aida/AEtjO1VD8oBkOhB91ijm4PtOOIJWNTEbKs0gkC6Jt-1N1v2E-oK8QxZZ7I5gapZab6_1LRRQCdIwn_HB9Ejpf4TwQd5IpspY6fzh7uLqzB_H4eZxOkkAgE9uh1niAm4Q02W59OA5DjdPsN360d2c0nvAWYqqmjz3LxxUxAUB3WkemkJhq2XS3_Nq679597ejdW4ASAgoioR25FByOp-8DlK1yHJTP4ldHPp_HbcG63bs5cqjlO24qSUH8szCGl1nhPm0AJocXLgr47R9pg"/>
+<!-- Seamless dark bottom-vignette fade into dark background, exactly like join2manish hero -->
+<div class="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#0a0312] via-[#0a0312]/80 to-transparent pointer-events-none"></div>
+<!-- Subtle side edge shadow blends -->
+<div class="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#0a0312]/60 to-transparent pointer-events-none"></div>
+<div class="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#0a0312]/60 to-transparent pointer-events-none"></div>
+</div>
+</div>
+</div>
+<!-- Right Flank Slider Controls: PREV / NEXT (Faithful to screenshot https://lh3.googleusercontent.com/aida-public/AB6AXuD6eaBeNcf3t5u_D6qtd5MA7Q60DCu4unN84_cTnoSpluXHKStm4JgODgXLwZiLdhD0Q8Qaq3I7m-FjD08A5VFHBUlg58PQ1zQO0_Ob636Zt9u58b3avT2pnSgv2r2paMFFawul_D8YIKEaQlLSBooA8xTL9Jglmp0-TK6GJbFlhLzyNDOxwSSuZqD9ibOMPIo8bGysGL7KQi3QruX2y_mZ4uz9fG1n_MegY47Xd0-4wCJVSgB2AfGW7Mx-2MYfu9f0Vw) -->
+<div class="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 flex-col items-center gap-3 z-30 select-none text-right">
+<button class="text-xs font-mono tracking-widest uppercase text-gray-400 hover:text-white transition-colors duration-150 py-1" id="sliderPrev">
+          PREV
+        </button>
+<div class="w-8 h-[1px] bg-gray-600"></div>
+<button class="text-xs font-mono tracking-widest uppercase text-gray-400 hover:text-white transition-colors duration-150 py-1" id="sliderNext">
+          NEXT
+        </button>
+</div>
+</div>
+</div>
+<!-- Interactive Script for PREV / NEXT Headline Cycling -->
+<script>
+    (function() {
+      const slides = [
+        {
+          title: "Defining<br/>India's Digital<br/>Space.",
+          sub: "Academic Innovator & Strategic Tech Mentor"
+        },
+        {
+          title: "Mentoring<br/>India's Future<br/>Engineers.",
+          sub: "Empowering 12,000+ Builders & Tech Leaders"
+        },
+        {
+          title: "Architecting<br/>AI Research &<br/>Ventures.",
+          sub: "From Campus Capstones to Global Platforms"
+        }
+      ];
+      let current = 0;
+      const titleEl = document.getElementById('heroTitle');
+      const subEl = document.getElementById('heroSubline');
+      const nextBtn = document.getElementById('sliderNext');
+      const prevBtn = document.getElementById('sliderPrev');
+
+      function updateSlide(idx) {
+        if (!titleEl || !subEl) return;
+        titleEl.style.opacity = '0';
+        setTimeout(() => {
+          titleEl.innerHTML = slides[idx].title;
+          subEl.innerHTML = '<span class="w-8 h-[2px] bg-pink-500 inline-block"></span> ' + slides[idx].sub;
+          titleEl.style.opacity = '1';
+        }, 150);
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          current = (current + 1) % slides.length;
+          updateSlide(current);
+        });
+      }
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          current = (current - 1 + slides.length) % slides.length;
+          updateSlide(current);
+        });
+      }
+    })();
+  </script>
+</section>
+<!-- WHO IS PROF. DIPALI? (Counterpart to "Who is Manish Pandey?") -->
+<section class="w-full py-28 bg-[#0b0314] relative border-b border-[#210c33]" id="about">
+<div class="max-w-7xl mx-auto px-6 md:px-12">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+<div>
+<span class="font-mono text-xs uppercase tracking-widest text-pink-400 font-bold block mb-2">About The Mentor</span>
+<h2 class="font-display text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+    Who is Prof. Dipali?
+  </h2>
+<p class="font-body-md text-gray-300 max-w-xl mt-3 text-base leading-relaxed">
+    Coach to Engineers, Innovators &amp; Student Leaders. Defining academic innovation and the Indian technology educational landscape.
+  </p>
+</div>
+<div class="mt-4 md:mt-0 font-mono text-xs text-gray-400 uppercase tracking-widest">
+<span>14+ Yrs Academic &amp; Industry Advisory</span>
+</div>
+</div>
+<!-- 3 Pillar Editorial Layout + Action Portrait Card -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left: 3 Pillars with Editorial Hierarchy -->
+<div class="lg:col-span-7 space-y-6">
+<!-- Pillar 1: Rooted Foundations -->
+<div class="bg-[#140722] rounded-xl p-8 border border-[#26103b] hover:border-pink-500/40 transition-colors">
+<div class="flex items-center gap-3 mb-3">
+<span class="w-8 h-8 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center font-bold font-mono text-sm">01</span>
+<h3 class="font-display text-xl font-bold text-white">Rooted Foundations</h3>
+</div>
+<p class="font-body-md text-gray-300 leading-relaxed text-sm md:text-base">
+      Prof. Dipali’s journey is anchored in persistent dedication and relentless academic curiosity. From the earliest days of conducting peer workshops and laboratory mentorship to building campus-wide coding circles, she realized that talent is everywhere, but tailored mentorship is rare. Through over a decade of deep classroom engagement, she has instilled rigorous engineering principles into thousands of young minds across India, instilling the resilience required to thrive in high-stakes technological environments.
+    </p>
+</div>
+<!-- Pillar 2: Digital & Technical Visionary -->
+<div class="bg-[#140722] rounded-xl p-8 border border-[#26103b] hover:border-purple-500/40 transition-colors">
+<div class="flex items-center gap-3 mb-3">
+<span class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-300 flex items-center justify-center font-bold font-mono text-sm">02</span>
+<h3 class="font-display text-xl font-bold text-white">Digital &amp; Technical Visionary</h3>
+</div>
+<p class="font-body-md text-gray-300 leading-relaxed text-sm md:text-base">
+      Standing at the bleeding edge of AI tools, modern system architecture, and tech entrepreneurship, Prof. Dipali bridges the traditional curriculum gap with industry demands. She collaborates closely with incubation centers, venture studios, and tech founders to modernize how student engineers architect scalable systems, contribute to open-source software, and transform raw semester projects into fundable ventures and production-grade software platforms.
+    </p>
+</div>
+<!-- Pillar 3: Shaping Engineering Excellence -->
+<div class="bg-[#140722] rounded-xl p-8 border border-[#26103b] hover:border-pink-500/40 transition-colors">
+<div class="flex items-center gap-3 mb-3">
+<span class="w-8 h-8 rounded-lg bg-pink-500/20 text-pink-300 flex items-center justify-center font-bold font-mono text-sm">03</span>
+<h3 class="font-display text-xl font-bold text-white">Shaping Engineering Excellence</h3>
+</div>
+<p class="font-body-md text-gray-300 leading-relaxed text-sm md:text-base">
+      Beyond university lecture halls, Prof. Dipali serves as a national keynote speaker at prominent developer conferences and hackathons, advocating for equitable tech education and ethical artificial intelligence. She continually authors curriculum roadmaps and career frameworks that empower graduates to transition smoothly from university labs to top-tier international tech firms.
+    </p>
+</div>
+</div>
+<!-- Right: Action Portrait Card -->
+<div class="lg:col-span-5 sticky top-28">
+<div class="bg-[#140722] rounded-2xl border border-[#26103b] overflow-hidden shadow-2xl">
+<div class="relative h-[420px] overflow-hidden bg-[#090211]">
+<img alt="Prof. Dipali in academic consultation" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700 opacity-90" src="https://lh3.googleusercontent.com/aida/AEtjO1XQu-zUr-Q7_ZP13Jros6Mu3X-2nyLimsYN2nTB9lppyvugWK1-E_TedVujnSBp4gE1TS4vUoYG_-byFRseBIbRZGRcyTpdzHpJu2JIIb7P-FGYlQnuOhGEohtF1Ej6qPnCdA93dqQCc_SQVttYAV7GyA4cXQmVzCnlQd5CY2S1zaRhz1RuQxAJHm6RwXgbe412ZhqY1fMY_sakbgoLPUxZbtabmv8bI_aGEHCwXCqT8SGlxP1VjU4CeF4ZwhXIYgp4R7zbRVEnzA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#140722] via-transparent to-transparent opacity-90"></div>
+<div class="absolute top-4 right-4 bg-[#090211]/85 backdrop-blur-md border border-[#26103b] px-3 py-1 rounded-full text-xs font-mono uppercase text-pink-400">
+        Leadership in Action
+      </div>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<h4 class="font-display text-xl text-white font-bold">Shaping Digital India</h4>
+<p class="font-mono text-xs text-gray-400 mt-0.5">Keynote Speaker &amp; Engineering Strategist</p>
+</div>
+<span class="material-symbols-outlined text-pink-400 text-3xl">school</span>
+</div>
+<p class="font-body-md text-gray-300 text-sm leading-relaxed italic">
+        “True engineering is not merely passing tests—it is the courageous practice of shaping the future through disciplined problem solving, humane technology, and unbounded curiosity.”
+      </p>
+<div class="pt-2 flex items-center gap-1.5 text-pink-400 font-mono text-xs font-semibold hover:text-white transition-colors cursor-pointer">
+<span>View Full Academic Bio &amp; Research</span>
+<span class="material-symbols-outlined text-sm">north_east</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FLAGSHIP BOOK / GUIDE SPOTLIGHT (Direct counterpart to "Booming Digital Stars") -->
+<section class="w-full py-28 bg-[#090211] relative overflow-hidden border-b border-[#210c33]" id="flagship-guide">
+<div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<span class="font-mono text-xs uppercase tracking-widest text-pink-400 font-bold block mb-2">National Bestseller &amp; Reference Guide</span>
+<h2 class="font-display text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+        Mastering Engineering &amp; Tech Careers
+      </h2>
+<p class="font-body-md text-gray-300 mt-3 text-base">
+        Behind the scenes of India's prominent tech builders, academic visionaries, and high-velocity engineers.
+      </p>
+</div>
+<!-- Book Showcase Split Card -->
+<div class="bg-[#140722] border border-[#26103b] rounded-2xl p-8 md:p-12 shadow-2xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Left: Book Visual Render -->
+<div class="lg:col-span-5 flex justify-center">
+<div class="relative group max-w-[320px] w-full">
+<div class="relative rounded-lg overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.9)] border-l-4 border-l-pink-500 border border-[#26103b] bg-[#1a0b2c] transition-transform duration-300 group-hover:-translate-y-2">
+<div class="p-8 bg-gradient-to-br from-[#090211] via-[#140722] to-purple-950/60 text-white flex flex-col justify-between min-h-[440px]">
+<div>
+<div class="flex justify-between items-start mb-6">
+<span class="font-mono text-[10px] uppercase tracking-widest px-2.5 py-1 rounded bg-pink-500/20 text-pink-400 border border-pink-500/40 font-bold">Official Handbook</span>
+<span class="material-symbols-outlined text-purple-300">menu_book</span>
+</div>
+<p class="font-mono text-xs tracking-widest uppercase text-purple-300 font-semibold mb-1">Academic Master Series</p>
+<h3 class="font-display text-2xl font-extrabold leading-tight text-white mb-2">
+                    Mastering Engineering &amp; Tech Careers
+                  </h3>
+<p class="font-body-md text-xs text-gray-300">
+                    From Campus to Global Tech. Architecting high-impact careers in the AI era.
+                  </p>
+</div>
+<div class="pt-6 border-t border-[#26103b] flex items-center justify-between">
+<div>
+<p class="font-display text-sm font-bold text-white">Prof. Dipali</p>
+<p class="font-mono text-[10px] text-gray-400">Foreword by Leading Silicon Valley Founders</p>
+</div>
+<span class="material-symbols-outlined text-pink-400 text-2xl">auto_awesome</span>
+</div>
+</div>
+</div>
+<div class="w-[90%] mx-auto h-4 bg-black/60 blur-md rounded-full mt-2"></div>
+</div>
+</div>
+<!-- Right: Book Narrative & Points -->
+<div class="lg:col-span-7 space-y-6">
+<div>
+<span class="inline-block px-3 py-1 rounded-full bg-pink-500/20 text-pink-400 border border-pink-500/30 font-mono text-xs font-semibold uppercase mb-3">
+              Essential Reading for Engineering Students &amp; Junior Leaders
+            </span>
+<h3 class="font-display text-2xl md:text-3xl font-bold text-white">
+              From Campus Projects to Seed Ventures &amp; Global Engineering Roles
+            </h3>
+</div>
+<p class="font-body-md text-gray-300 leading-relaxed text-sm md:text-base">
+            Co-authored with leading Indian industry architects and university deans, this comprehensive compendium chronicles how modern students can break through traditional academic ceilings. It breaks down systemic thinking, open-source portfolio development, AI augmentation, and how to stand out in an evolving global workforce.
+          </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-pink-400 text-lg mt-0.5">check_circle</span>
+<span class="font-body-md text-sm text-gray-200">The 2026 Developer Blueprint &amp; Core Stacks</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-pink-400 text-lg mt-0.5">check_circle</span>
+<span class="font-body-md text-sm text-gray-200">Cracking High-Yield Technical Interviews</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-pink-400 text-lg mt-0.5">check_circle</span>
+<span class="font-body-md text-sm text-gray-200">Campus Incubators: From Pitch to Deployment</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-pink-400 text-lg mt-0.5">check_circle</span>
+<span class="font-body-md text-sm text-gray-200">Building Long-Term Mentorship Circles</span>
+</div>
+</div>
+<div class="pt-4 flex flex-wrap items-center gap-6">
+<a class="inline-flex items-center px-7 py-3 rounded-full bg-white text-gray-950 hover:bg-gray-200 font-display text-sm font-bold shadow-lg transition-all" href="#consultation">
+<span>Get Your Copy on Amazon</span>
+<span class="material-symbols-outlined ml-2 text-base">open_in_new</span>
+</a>
+<span class="font-mono text-xs text-gray-300 flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-400 text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+              4.9 / 5 Rating (850+ Verified Reviews)
+            </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- EDITORIAL ARTICLES & THOUGHT LEADERSHIP (Counterpart to join2manish.com blog section) -->
+<section class="w-full py-28 bg-[#0b0314] relative border-b border-[#210c33]" id="articles">
+<div class="max-w-7xl mx-auto px-6 md:px-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+<div>
+<span class="font-mono text-xs uppercase tracking-widest text-pink-400 font-bold block mb-2">Articles &amp; Dispatches</span>
+<h2 class="font-display text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+        Curated Thought Leadership.
+      </h2>
+</div>
+<a class="mt-4 md:mt-0 inline-flex items-center gap-1 font-mono text-xs uppercase tracking-widest text-pink-400 hover:text-white transition-colors" href="#articles">
+<span>Explore All 24+ Articles</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Article 1 -->
+<article class="bg-[#140722] rounded-xl p-8 border border-[#26103b] hover:border-pink-500/40 flex flex-col justify-between transition-all group">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="px-2.5 py-0.5 rounded-full bg-pink-500/20 text-pink-400 font-mono text-[11px] uppercase font-bold">
+            Artificial Intelligence
+          </span>
+<span class="font-mono text-xs text-gray-400">Oct 2024</span>
+</div>
+<h3 class="font-display text-xl font-bold text-white mb-3 group-hover:text-pink-300 transition-colors">
+          AI Coding in 2026: Why Fundamentals Matter More Than Ever
+        </h3>
+<p class="font-body-md text-sm text-gray-300 mb-6 leading-relaxed">
+          LLMs can write syntax in seconds, but debugging architectural flaws, race conditions, and telemetry demands human mastery.
+        </p>
+</div>
+<div class="pt-4 border-t border-[#26103b] flex items-center justify-between font-mono text-xs text-pink-400">
+<span>Read More →</span>
+<span class="text-gray-400">6 min read</span>
+</div>
+</article>
+<!-- Article 2 -->
+<article class="bg-[#140722] rounded-xl p-8 border border-[#26103b] hover:border-purple-500/40 flex flex-col justify-between transition-all group">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 font-mono text-[11px] uppercase font-bold">
+            Algorithms
+          </span>
+<span class="font-mono text-xs text-gray-400">Sep 2024</span>
+</div>
+<h3 class="font-display text-xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">
+          Instagram Algorithms vs Creator Platforms: The Next Shift
+        </h3>
+<p class="font-body-md text-sm text-gray-300 mb-6 leading-relaxed">
+          Deconstructing recommendation engines, short-form graph algorithms, and why engineering students must master platform dynamics.
+        </p>
+</div>
+<div class="pt-4 border-t border-[#26103b] flex items-center justify-between font-mono text-xs text-purple-300">
+<span>Read More →</span>
+<span class="text-gray-400">4 min read</span>
+</div>
+</article>
+<!-- Article 3 -->
+<article class="bg-[#140722] rounded-xl p-8 border border-[#26103b] hover:border-pink-500/40 flex flex-col justify-between transition-all group">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="px-2.5 py-0.5 rounded-full bg-pink-500/20 text-pink-400 font-mono text-[11px] uppercase font-bold">
+            Economics
+          </span>
+<span class="font-mono text-xs text-gray-400">Sep 2024</span>
+</div>
+<h3 class="font-display text-xl font-bold text-white mb-3 group-hover:text-pink-300 transition-colors">
+          The Orange Economy &amp; Digital Creator Space
+        </h3>
+<p class="font-body-md text-sm text-gray-300 mb-6 leading-relaxed">
+          India's creative intellectual property ecosystem is unlocking billions in technical infrastructure and micro-SaaS opportunities.
+        </p>
+</div>
+<div class="pt-4 border-t border-[#26103b] flex items-center justify-between font-mono text-xs text-pink-400">
+<span>Read More →</span>
+<span class="text-gray-400">5 min read</span>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- MEDIA RECOGNITION & KEYNOTE APPEARANCES -->
+<section class="w-full py-28 bg-[#090211] relative border-b border-[#210c33] overflow-hidden">
+<!-- Repeating Monospace Marquee -->
+<div class="w-full overflow-hidden select-none opacity-20 py-3 border-y border-[#26103b] mb-16">
+<div class="flex whitespace-nowrap gap-12 font-mono text-xl md:text-2xl uppercase tracking-widest text-gray-300">
+<span>Featured in National Media</span>
+<span>•</span>
+<span>Academic Conclaves</span>
+<span>•</span>
+<span>IEEE Keynotes</span>
+<span>•</span>
+<span>EdTech Summits</span>
+<span>•</span>
+<span>Featured in National Media</span>
+<span>•</span>
+<span>Academic Conclaves</span>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-6 md:px-12">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<span class="font-mono text-xs uppercase tracking-widest text-pink-400 font-bold block mb-2">Keynote &amp; Media Broadcasts</span>
+<h2 class="font-display text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+        Featured Masterclasses &amp; Press
+      </h2>
+</div>
+<!-- Video Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Video 1 -->
+<div class="bg-[#140722] rounded-xl overflow-hidden border border-[#26103b] group">
+<div class="relative h-48 bg-[#1f0b35] overflow-hidden flex items-center justify-center">
+<img alt="Prof. Dipali delivering national keynote on education" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-70" src="https://lh3.googleusercontent.com/aida/AEtjO1Xd1maN9JaPsmLdgjhKT7re86KMV4C0Z3xP21kJoIlgi12BD-ZOs2NgySkIPX2ePpM67Y35aUyt-Kjwa9zwJiGQsWCQsb4YRk-pwn6vxlwEnZnkoqalRzk27K2R37cjTjCv8ZAfVSo9yjbK_UtyDXqLLePLXpq1NBmH5KmH0smcA-Uv3wTPOhSngBGci2OXaQ-fnxGJGMSnpj-TufUQBN1cb5QbIIUvwcNLLJtJ63yVG15nh9hxADLCuSJ7bJzBkSnUorCrZpNY4g"/>
+<div class="absolute w-12 h-12 rounded-full bg-pink-500/90 backdrop-blur-sm flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">play_arrow</span>
+</div>
+<div class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-black/80 text-white font-mono text-[10px]">38:22</div>
+</div>
+<div class="p-6">
+<p class="font-mono text-xs text-pink-400 uppercase font-bold mb-1">National EdTech Summit</p>
+<h4 class="font-display text-lg text-white font-semibold">
+            Engineering in the Era of Autonomous AI Agents
+          </h4>
+</div>
+</div>
+<!-- Video 2 -->
+<div class="bg-[#140722] rounded-xl overflow-hidden border border-[#26103b] group">
+<div class="relative h-48 bg-[#1f0b35] overflow-hidden flex items-center justify-center">
+<img alt="Prof. Dipali keynote at IEEE Conclave" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-70" src="https://lh3.googleusercontent.com/aida/AEtjO1VD8oBkOhB91ijm4PtOOIJWNTEbKs0gkC6Jt-1N1v2E-oK8QxZZ7I5gapZab6_1LRRQCdIwn_HB9Ejpf4TwQd5IpspY6fzh7uLqzB_H4eZxOkkAgE9uh1niAm4Q02W59OA5DjdPsN360d2c0nvAWYqqmjz3LxxUxAUB3WkemkJhq2XS3_Nq679597ejdW4ASAgoioR25FByOp-8DlK1yHJTP4ldHPp_HbcG63bs5cqjlO24qSUH8szCGl1nhPm0AJocXLgr47R9pg"/>
+<div class="absolute w-12 h-12 rounded-full bg-purple-600/90 backdrop-blur-sm flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">play_arrow</span>
+</div>
+<div class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-black/80 text-white font-mono text-[10px]">44:15</div>
+</div>
+<div class="p-6">
+<p class="font-mono text-xs text-purple-300 uppercase font-bold mb-1">IEEE Conclave Keynote</p>
+<h4 class="font-display text-lg text-white font-semibold">
+            First Principles of Scalable Software Architecture
+          </h4>
+</div>
+</div>
+<!-- Video 3 -->
+<div class="bg-[#140722] rounded-xl overflow-hidden border border-[#26103b] group">
+<div class="relative h-48 bg-[#1f0b35] overflow-hidden flex items-center justify-center">
+<img alt="Prof. Dipali in fireside conversation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-70" src="https://lh3.googleusercontent.com/aida/AEtjO1XQu-zUr-Q7_ZP13Jros6Mu3X-2nyLimsYN2nTB9lppyvugWK1-E_TedVujnSBp4gE1TS4vUoYG_-byFRseBIbRZGRcyTpdzHpJu2JIIb7P-FGYlQnuOhGEohtF1Ej6qPnCdA93dqQCc_SQVttYAV7GyA4cXQmVzCnlQd5CY2S1zaRhz1RuQxAJHm6RwXgbe412ZhqY1fMY_sakbgoLPUxZbtabmv8bI_aGEHCwXCqT8SGlxP1VjU4CeF4ZwhXIYgp4R7zbRVEnzA"/>
+<div class="absolute w-12 h-12 rounded-full bg-pink-500/90 backdrop-blur-sm flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">play_arrow</span>
+</div>
+<div class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-black/80 text-white font-mono text-[10px]">52:10</div>
+</div>
+<div class="p-6">
+<p class="font-mono text-xs text-pink-400 uppercase font-bold mb-1">Founders &amp; Fellows Podcast</p>
+<h4 class="font-display text-lg text-white font-semibold">
+            Bridging Campus Labs with Global Seed Venture
+          </h4>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- STUDENT & MENTEE TESTIMONIALS (Counterpart to "What they say about Manish Pandey") -->
+<section class="w-full py-28 bg-[#0b0314] relative border-b border-[#210c33]" id="testimonials">
+<div class="max-w-7xl mx-auto px-6 md:px-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+<div>
+<span class="font-mono text-xs uppercase tracking-widest text-pink-400 font-bold block mb-2">Endorsements &amp; Voices</span>
+<h2 class="font-display text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+        What They Say About Prof. Dipali.
+      </h2>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="bg-[#140722] rounded-xl p-8 border border-[#26103b] flex flex-col justify-between">
+<div class="space-y-4">
+<div class="flex text-yellow-400 gap-1 text-sm">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-gray-200 text-sm leading-relaxed">
+          “Prof. Dipali is one of the most intellectually passionate mentors I have encountered. She transformed our hackathon concept into a validated software product, guiding our architecture with extreme precision. Her relentless belief in students is an unparalleled gift.”
+        </p>
+</div>
+<div class="pt-6 border-t border-[#26103b] mt-6 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center font-bold font-mono text-xs">
+          RM
+        </div>
+<div>
+<h4 class="font-display text-sm font-bold text-white">Dr. Ritesh Malhotra</h4>
+<p class="font-mono text-[10px] text-gray-400">Forbes 30U30 Asia | Founder, TechNext</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-[#140722] rounded-xl p-8 border border-[#26103b] flex flex-col justify-between">
+<div class="space-y-4">
+<div class="flex text-yellow-400 gap-1 text-sm">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-gray-200 text-sm leading-relaxed">
+          “A true kingmaker in engineering education. Her deep clarity, commitment to fundamentals, and selfless support provide young coders with lifelong confidence. India’s engineering campuses need ten thousand mentors like Prof. Dipali.”
+        </p>
+</div>
+<div class="pt-6 border-t border-[#26103b] mt-6 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-purple-500/20 text-purple-300 flex items-center justify-center font-bold font-mono text-xs">
+          AJ
+        </div>
+<div>
+<h4 class="font-display text-sm font-bold text-white">Ayush Joshi</h4>
+<p class="font-mono text-[10px] text-gray-400">Head of Platform, Global Cloud AI</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-[#140722] rounded-xl p-8 border border-[#26103b] flex flex-col justify-between">
+<div class="space-y-4">
+<div class="flex text-yellow-400 gap-1 text-sm">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-gray-200 text-sm leading-relaxed">
+          “Her mentorship on our senior capstone project unlocked our first institutional seed round. Prof. Dipali possesses that rare blend of rigorous academic standards and practical silicon-valley execution acumen.”
+        </p>
+</div>
+<div class="pt-6 border-t border-[#26103b] mt-6 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-pink-500/20 text-pink-400 flex items-center justify-center font-bold font-mono text-xs">
+          AG
+        </div>
+<div>
+<h4 class="font-display text-sm font-bold text-white">Aditi Goel</h4>
+<p class="font-mono text-[10px] text-gray-400">Co-founder, Edubridge AI (YC '23)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- BOTTOM CONSULTATION / TOPMATE BANNER (Counterpart to "Schedule a Call" / Topmate booking) -->
+<section class="w-full py-28 bg-gradient-to-b from-[#090211] to-[#040108] relative overflow-hidden" id="consultation">
+<div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+<div class="bg-[#140722] border border-[#26103b] rounded-2xl p-8 md:p-14 shadow-2xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<div class="lg:col-span-8 space-y-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/20 border border-pink-500/30 text-pink-400 text-xs font-mono uppercase font-semibold">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          Weekly Consultation Slots Open
+        </div>
+<h2 class="font-display text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+          Talk to Prof. Dipali — <br/>
+<span class="text-pink-400">Book a 1:1 Consultation / Strategy Call</span>
+</h2>
+<p class="font-body-md text-gray-300 max-w-2xl text-base">
+          Whether you are an aspiring student engineer seeking clarity on your career roadmap, a campus founder validating your architecture, or an institution seeking keynote advisory—connect directly.
+        </p>
+<div class="flex flex-wrap items-center gap-6 text-gray-300 font-mono text-xs">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-pink-400 text-base">schedule</span> 45-Min Advisory</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-pink-400 text-base">architecture</span> Architecture Review</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-pink-400 text-base">school</span> Fellowship Guidance</span>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col justify-center items-center lg:items-end">
+<div class="w-full max-w-sm bg-[#090211] rounded-2xl p-6 border border-[#26103b] text-center space-y-4">
+<div class="w-16 h-16 rounded-full mx-auto overflow-hidden border-2 border-pink-500">
+<img alt="Prof. Dipali Profile" class="w-full h-full object-cover object-top" src="https://lh3.googleusercontent.com/aida/AEtjO1VD8oBkOhB91ijm4PtOOIJWNTEbKs0gkC6Jt-1N1v2E-oK8QxZZ7I5gapZab6_1LRRQCdIwn_HB9Ejpf4TwQd5IpspY6fzh7uLqzB_H4eZxOkkAgE9uh1niAm4Q02W59OA5DjdPsN360d2c0nvAWYqqmjz3LxxUxAUB3WkemkJhq2XS3_Nq679597ejdW4ASAgoioR25FByOp-8DlK1yHJTP4ldHPp_HbcG63bs5cqjlO24qSUH8szCGl1nhPm0AJocXLgr47R9pg"/>
+</div>
+<div>
+<h4 class="font-display text-base font-bold text-white">Direct Advisory via Topmate</h4>
+<p class="font-mono text-xs text-gray-400">Verified Academic Mentor</p>
+</div>
+<a class="w-full py-3 px-6 rounded-full bg-white hover:bg-gray-200 text-gray-950 font-display text-sm font-bold flex items-center justify-center gap-2 shadow-lg transition-all" href="https://topmate.io" rel="noopener noreferrer" target="_blank">
+<span>Book a Mentorship Call</span>
+<span class="material-symbols-outlined text-base">calendar_today</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- ELEVATE FOOTER (Moody Minimalist Dark Theme) -->
+<footer class="bg-[#06020a] border-t border-[#1a0828] py-16">
+<div class="max-w-7xl mx-auto px-6 md:px-12">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+<div class="lg:col-span-2 pr-6">
+<div class="font-display text-2xl font-extrabold text-white mb-3">
+        ELEVATE<span class="text-pink-500">.</span>
+</div>
+<p class="font-body-md text-sm text-gray-400 max-w-sm mb-4 leading-relaxed">
+        Empowering engineers and tech visionaries through rigorous academic principles, strategic guidance, and high-impact industry mentorship.
+      </p>
+<p class="font-mono text-xs text-gray-500 uppercase tracking-widest">
+        The Modern Executive Academy
+      </p>
+</div>
+<div>
+<h4 class="font-display text-sm text-white font-bold mb-4 tracking-wide">Platform</h4>
+<ul class="space-y-2 text-sm text-gray-400 font-medium">
+<li><a class="hover:text-pink-400 transition-colors" data-path="about" href="#about">About</a></li>
+<li><a class="hover:text-pink-400 transition-colors" data-path="courses" href="#">Courses</a></li>
+<li><a class="hover:text-pink-400 transition-colors" data-path="community" href="#">Community</a></li>
+<li><a class="hover:text-pink-400 transition-colors" data-path="career-roadmaps" href="#">Career Roadmaps</a></li>
+<li><a class="hover:text-pink-400 transition-colors" data-path="testimonials" href="#testimonials">Testimonials</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-display text-sm text-white font-bold mb-4 tracking-wide">Legal</h4>
+<ul class="space-y-2 text-sm text-gray-400 font-medium">
+<li><a class="hover:text-pink-400 transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-pink-400 transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-pink-400 transition-colors" href="#">Cookie Policy</a></li>
+<li><a class="hover:text-pink-400 transition-colors" href="#">Security</a></li>
+</ul>
+</div>
+<div class="md:col-span-2 lg:col-span-1">
+<h4 class="font-display text-sm text-white font-bold mb-4 tracking-wide">Newsletter</h4>
+<p class="font-body-md text-xs text-gray-400 mb-3">
+        Curated strategic engineering memos directly to your inbox.
+      </p>
+<form class="flex flex-col gap-2" onsubmit="event.preventDefault();">
+<input class="w-full bg-[#140722] border border-[#26103b] rounded-lg px-3 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-pink-500 transition-all" placeholder="Enter your email" type="email"/>
+<button class="w-full py-2 rounded-lg bg-pink-600 hover:bg-pink-500 text-white font-display text-xs font-bold transition-all" type="submit">
+          Subscribe
+        </button>
+</form>
+</div>
+</div>
+<div class="mt-12 pt-6 border-t border-[#1a0828] flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-xs text-gray-500">
+<p>© 2024 ELEVATE Learning Inc. Prof. Dipali. All rights reserved.</p>
+<p class="uppercase tracking-wider">Defined for Technical Mastery</p>
+</div>
+</div>
+</footer>
+</body></html>

@@ -7,6 +7,7 @@ import Community from './pages/Community';
 import CareerRoadmaps from './pages/CareerRoadmaps';
 import AboutElevate from './pages/AboutElevate';
 import Testimonials from './pages/Testimonials';
+import HomeV2 from './pages/HomeV2';
 
 function App() {
   // Initialize Lenis for buttery smooth momentum scrolling (like WebVeda)
@@ -43,6 +44,7 @@ function App() {
         <Route path="/career-roadmaps" element={<CareerRoadmaps />} />
         <Route path="/about-elevate" element={<AboutElevate />} />
         <Route path="/testimonials" element={<Testimonials />} />
+        <Route path="/home-v2" element={<HomeV2 />} />
         {/* We will add more routes here for login, dashboard, journeys, etc. */}
       </Routes>
     </Router>
