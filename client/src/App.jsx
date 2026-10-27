@@ -25,6 +25,9 @@ import Portfolio from './pages/Portfolio';
 import VerifyCertificate from './pages/VerifyCertificate';
 import Events from './pages/Events';
 import EventDetail from './pages/EventDetail';
+import SoftwareEngineerRoadmap from './pages/SoftwareEngineerRoadmap';
+import DataScientistRoadmap from './pages/DataScientistRoadmap';
+import CareerTrackDetail from './pages/CareerTrackDetail';
 
 function App() {
   // Initialize Lenis for buttery smooth momentum scrolling
@@ -63,6 +66,9 @@ function App() {
           <Route path="/courses/:id" element={<CourseDetail />} />
           <Route path="/community" element={<Community />} />
           <Route path="/career-roadmaps" element={<CareerRoadmaps />} />
+          <Route path="/career-roadmaps/software-engineer" element={<SoftwareEngineerRoadmap />} />
+          <Route path="/career-roadmaps/data-scientist" element={<DataScientistRoadmap />} />
+          <Route path="/career-roadmaps/:trackSlug" element={<CareerTrackDetail />} />
           <Route path="/about-elevate" element={<AboutElevate />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/login" element={<Login />} />
