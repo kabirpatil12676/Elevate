@@ -59,8 +59,8 @@ function App() {
     <Router>
       <AuthProvider>
         <Routes>
-          {/* Public routes */}
-          <Route path="/" element={<Home />} />
+          {/* Public routes — Homepage v2 is the active homepage */}
+          <Route path="/" element={<HomeV2 />} />
           <Route path="/home-v2" element={<HomeV2 />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:id" element={<CourseDetail />} />
