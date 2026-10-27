@@ -33,19 +33,32 @@ async function runVerification() {
     JSON.stringify(priceColRes.rows)
   );
 
+  const CATALOGUE_TITLES = [
+    'How to Do Engineering',
+    'How to Organise an Event',
+    'How to Do Anchoring',
+    'Write Anchoring Script',
+    'What to Do in First Year',
+    'How to Form a Team',
+    'Select Problem Statement',
+    'Synopsis & Report Making',
+  ];
+
   const journeysRes = await query(`
-    SELECT id, title, price, status FROM journeys WHERE status = 'published' ORDER BY title
-  `);
+    SELECT id, title, price, status FROM journeys
+    WHERE status = 'published' AND title = ANY($1::text[])
+    ORDER BY title
+  `, [CATALOGUE_TITLES]);
   assert(
     journeysRes.rows.length === 8,
-    'All 8 existing published journeys preserved',
+    'All 8 catalogue published journeys preserved',
     `Found ${journeysRes.rows.length}`
   );
 
   const allZero = journeysRes.rows.every(j => Number(j.price) === 0);
   assert(
     allZero,
-    'All 8 existing journeys default to ₹0.00 (Free)',
+    'All 8 catalogue journeys default to ₹0.00 (Free)',
     JSON.stringify(journeysRes.rows.map(j => ({ title: j.title, price: j.price })))
   );
 
@@ -150,12 +163,13 @@ async function runVerification() {
 
   const catRes = await fetch(`${baseUrl}/api/journeys`);
   const catData = await catRes.json();
+  const catalogueFromApi = (catData.journeys || []).filter((j) => CATALOGUE_TITLES.includes(j.title));
   assert(
-    catRes.status === 200 && catData.success && catData.journeys.length === 8,
-    'GET /api/journeys returns 200 with 8 journeys'
+    catRes.status === 200 && catData.success && catalogueFromApi.length === 8,
+    'GET /api/journeys returns 200 including all 8 catalogue journeys'
   );
   assert(
-    catData.journeys.every(j => j.price !== undefined && j.price !== null),
+    (catData.journeys || []).every(j => j.price !== undefined && j.price !== null),
     'GET /api/journeys exposes price field on every journey'
   );
 

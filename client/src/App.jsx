@@ -19,6 +19,12 @@ import EducatorPortal from './pages/EducatorPortal';
 import AdminPortal from './pages/AdminPortal';
 import CourseDetail from './pages/CourseDetail';
 import LearningNeeds from './pages/LearningNeeds';
+import LessonPlayer from './pages/LessonPlayer';
+import GrowthReport from './pages/GrowthReport';
+import Portfolio from './pages/Portfolio';
+import VerifyCertificate from './pages/VerifyCertificate';
+import Events from './pages/Events';
+import EventDetail from './pages/EventDetail';
 
 function App() {
   // Initialize Lenis for buttery smooth momentum scrolling
@@ -61,6 +67,9 @@ function App() {
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/verify-certificate/:token" element={<VerifyCertificate />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/events/:id" element={<EventDetail />} />
 
           {/* Role-protected routes */}
           <Route
@@ -68,6 +77,30 @@ function App() {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/learn/:journeyId"
+            element={
+              <ProtectedRoute>
+                <LessonPlayer />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/growth-report"
+            element={
+              <ProtectedRoute>
+                <GrowthReport />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/portfolio"
+            element={
+              <ProtectedRoute>
+                <Portfolio />
               </ProtectedRoute>
             }
           />

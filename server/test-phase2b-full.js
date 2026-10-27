@@ -55,6 +55,45 @@ async function runAllTests() {
   await query('DELETE FROM learner_needs WHERE user_id IN ($1, $2)', [userA.id, userB.id]);
 
   console.log('--- 1. Authentication & Access Control Tests ---');
+
+  const escSuffix = Date.now();
+  const escEmails = [];
+  async function registerWithRoleAttempt(attemptedRole, label) {
+    const email = `${label}_${escSuffix}@role-esc.elevate.test`;
+    escEmails.push(email);
+    const res = await fetch(`${baseUrl}/api/auth/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: `Role Escalation ${label}`,
+        email,
+        password: 'RoleEscPass#2B!',
+        role: attemptedRole,
+      }),
+    });
+    const data = await res.json();
+    return { status: res.status, data };
+  }
+
+  const escEducator = await registerWithRoleAttempt('educator', 'esc_educator');
+  assert(
+    escEducator.status === 201 && escEducator.data?.user?.role === 'learner',
+    'Public registration ignores requested educator role and creates a learner'
+  );
+  const escAdmin = await registerWithRoleAttempt('admin', 'esc_admin');
+  assert(
+    escAdmin.status === 201 && escAdmin.data?.user?.role === 'learner',
+    'Public registration ignores requested admin role and creates a learner'
+  );
+  const escDb = await query(
+    `SELECT email, role FROM users WHERE email = ANY($1::text[])`,
+    [escEmails]
+  );
+  assert(
+    escDb.rows.length === 2 && escDb.rows.every((r) => r.role === 'learner'),
+    'Database persists learner role after public role-escalation attempts'
+  );
+
   // 1.1 Unauthenticated GET
   const unauthGet = await fetch(`${baseUrl}/api/diagnostic/needs`);
   assert(unauthGet.status === 401, 'Unauthenticated GET /api/diagnostic/needs returns 401');
@@ -239,6 +278,8 @@ async function runAllTests() {
     recCaseD.recommendations.length === 0 && recCaseD.catalogueNote !== null,
     'Empty/unmatched profile returns 0 recommendations with clear catalogue notice'
   );
+
+  await query(`DELETE FROM users WHERE email = ANY($1::text[])`, [escEmails]);
 
   server.close();
 

@@ -111,6 +111,63 @@ export const educatorService = {
     const res = await api.patch(`/educator/journeys/${id}/publish`, { status });
     return res.data;
   },
+
+  /**
+   * Create a practical activity within a stage.
+   * @param {string} stageId - Stage UUID
+   * @param {object} data - { title, instructions, submission_type, is_required, due_date, max_attempts }
+   */
+  async createActivity(stageId, data) {
+    const res = await api.post(`/educator/stages/${stageId}/activities`, data);
+    return res.data;
+  },
+
+  /**
+   * Update an existing practical activity.
+   * @param {string} activityId - Activity UUID
+   * @param {object} data - Updated fields
+   */
+  async updateActivity(activityId, data) {
+    const res = await api.put(`/educator/activities/${activityId}`, data);
+    return res.data;
+  },
+
+  /**
+   * Delete or archive an activity.
+   * @param {string} activityId - Activity UUID
+   */
+  async deleteActivity(activityId) {
+    const res = await api.delete(`/educator/activities/${activityId}`);
+    return res.data;
+  },
+
+  /**
+   * List submissions across educator's journeys.
+   * @param {object} params - { status, journey_id, activity_id }
+   */
+  async getSubmissions(params = {}) {
+    const res = await api.get('/educator/submissions', { params });
+    return res.data.submissions;
+  },
+
+  /**
+   * Get full submission details, learner information, earlier attempts, and feedback.
+   * @param {string} submissionId - Submission UUID
+   */
+  async getSubmissionDetails(submissionId) {
+    const res = await api.get(`/educator/submissions/${submissionId}`);
+    return res.data.submission;
+  },
+
+  /**
+   * Review a submission (approve, request revision, or mark under review) with feedback.
+   * @param {string} submissionId - Submission UUID
+   * @param {object} data - { status: 'approved' | 'revision_requested' | 'under_review', comments, overall_score }
+   */
+  async reviewSubmission(submissionId, data) {
+    const res = await api.post(`/educator/submissions/${submissionId}/review`, data);
+    return res.data;
+  },
 };
 
 export default educatorService;

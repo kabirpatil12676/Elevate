@@ -14,6 +14,9 @@ import adminRoutes from './routes/admin.routes.js';
 import diagnosticRoutes from './routes/diagnostic.routes.js';
 import paymentRoutes from './routes/payment.routes.js';
 import educatorRoutes from './routes/educator.routes.js';
+import learnerRoutes from './routes/learner.routes.js';
+import certificateRoutes from './routes/certificate.routes.js';
+import eventRoutes from './routes/event.routes.js';
 import { query } from './config/db.js';
 
 dotenv.config();
@@ -45,17 +48,20 @@ app.use(cookieParser());
 app.use('/uploads', express.static('uploads'));
 
 // ── API Routes ─────────────────────────────────────────────
-app.use('/api/auth',        authRoutes);
-app.use('/api/users',       userRoutes);
-app.use('/api/journeys',    journeyRoutes);
-app.use('/api/capsules',    capsuleRoutes);
-app.use('/api/submissions', submissionRoutes);
-app.use('/api/feedback',    feedbackRoutes);
-app.use('/api/portfolio',   portfolioRoutes);
-app.use('/api/admin',       adminRoutes);
-app.use('/api/diagnostic',  diagnosticRoutes);
-app.use('/api/payments',    paymentRoutes);
-app.use('/api/educator',    educatorRoutes);
+app.use('/api/auth',         authRoutes);
+app.use('/api/users',        userRoutes);
+app.use('/api/journeys',     journeyRoutes);
+app.use('/api/capsules',     capsuleRoutes);
+app.use('/api/submissions',  submissionRoutes);
+app.use('/api/feedback',     feedbackRoutes);
+app.use('/api/portfolio',    portfolioRoutes);
+app.use('/api/admin',        adminRoutes);
+app.use('/api/diagnostic',   diagnosticRoutes);
+app.use('/api/payments',     paymentRoutes);
+app.use('/api/educator',     educatorRoutes);
+app.use('/api/learn',        learnerRoutes);
+app.use('/api/certificates', certificateRoutes);
+app.use('/api/events',       eventRoutes);
 
 // ── Health Check ───────────────────────────────────────────
 app.get('/api/health', async (req, res) => {

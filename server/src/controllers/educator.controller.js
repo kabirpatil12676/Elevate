@@ -143,27 +143,39 @@ export const getManageJourney = async (req, res, next) => {
     );
     const stages = sRes.rows;
 
-    // Fetch all capsules (lessons) for this journey's stages
+    // Fetch all capsules (lessons) and practical activities for this journey's stages
     const stageIds = stages.map(s => s.id);
     let capsules = [];
+    let activities = [];
     if (stageIds.length > 0) {
       const cRes = await query(
         `SELECT * FROM capsules WHERE stage_id = ANY($1) ORDER BY order_index ASC`,
         [stageIds]
       );
       capsules = cRes.rows;
+
+      const aRes = await query(
+        `SELECT a.*,
+           (SELECT COUNT(*) FROM submissions sub WHERE sub.activity_id = a.id) as submission_count
+         FROM activities a
+         WHERE a.stage_id = ANY($1) AND a.is_archived = false
+         ORDER BY a.order_index ASC, a.created_at ASC`,
+        [stageIds]
+      );
+      activities = aRes.rows;
     }
 
-    // Attach lessons to their respective stages
-    const stagesWithLessons = stages.map(stage => ({
+    // Attach lessons and activities to their respective stages
+    const stagesWithContent = stages.map(stage => ({
       ...stage,
       lessons: capsules.filter(c => c.stage_id === stage.id),
+      activities: activities.filter(a => a.stage_id === stage.id),
     }));
 
     res.json({
       success: true,
       journey,
-      stages: stagesWithLessons,
+      stages: stagesWithContent,
     });
   } catch (err) {
     next(err);

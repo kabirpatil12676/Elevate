@@ -18,7 +18,7 @@ const generateToken = (user) => {
  */
 export const register = async (req, res, next) => {
   try {
-    const { name, email, password, role } = req.body;
+    const { name, email, password } = req.body;
 
     // Check if user already exists
     const existing = await query('SELECT id FROM users WHERE email = $1', [email]);
@@ -30,9 +30,9 @@ export const register = async (req, res, next) => {
     const salt = await bcrypt.genSalt(12);
     const passwordHash = await bcrypt.hash(password, salt);
 
-    // Create user (role defaults to 'learner' if not specified)
-    const validRoles = ['learner', 'educator', 'admin'];
-    const userRole = validRoles.includes(role) ? role : 'learner';
+    // Public registration always creates a learner. Client-supplied role values
+    // (including educator/admin) are ignored to prevent privilege escalation.
+    const userRole = 'learner';
 
     const result = await query(
       `INSERT INTO users (name, email, password_hash, role)

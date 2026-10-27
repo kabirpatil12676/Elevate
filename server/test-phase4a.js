@@ -606,13 +606,24 @@ async function runTests() {
   );
 
   // Scenario 36: Verify existing 8 canonical published journeys remain completely intact
+  const catalogueTitles = [
+    'How to Do Engineering',
+    'How to Organise an Event',
+    'How to Do Anchoring',
+    'Write Anchoring Script',
+    'What to Do in First Year',
+    'How to Form a Team',
+    'Select Problem Statement',
+    'Synopsis & Report Making',
+  ];
   const res36 = await pool.query(
     `SELECT j.id, j.title, COUNT(s.id) as stage_count
      FROM journeys j
      LEFT JOIN stages s ON j.id = s.journey_id
-     WHERE j.status = 'published'
+     WHERE j.status = 'published' AND j.title = ANY($1::text[])
      GROUP BY j.id, j.title
-     ORDER BY j.title ASC`
+     ORDER BY j.title ASC`,
+    [catalogueTitles]
   );
   const eightJourneysIntact =
     res36.rows.length === 8 &&
@@ -620,7 +631,7 @@ async function runTests() {
   log(
     'Scenario 36: Regression check: All 8 canonical published journeys preserved with 6 stages each',
     eightJourneysIntact,
-    `Count: ${res36.rows.length}/8 published journeys`
+    `Count: ${res36.rows.length}/8 catalogue journeys`
   );
 }
 

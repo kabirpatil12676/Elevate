@@ -124,6 +124,7 @@ const Navbar = () => {
 
           <Link to="/community" className={`text-sm transition-colors ${location.pathname === '/community' ? 'text-[#24389c] font-semibold border-b-2 border-[#24389c] pb-0.5' : 'text-[#454652] hover:text-[#24389c]'}`}>Community</Link>
           <Link to="/career-roadmaps" className={`text-sm transition-colors ${location.pathname === '/career-roadmaps' ? 'text-[#24389c] font-semibold border-b-2 border-[#24389c] pb-0.5' : 'text-[#454652] hover:text-[#24389c]'}`}>Career Roadmaps</Link>
+          <Link to="/events" className={`text-sm transition-colors ${location.pathname.startsWith('/events') ? 'text-[#24389c] font-semibold border-b-2 border-[#24389c] pb-0.5' : 'text-[#454652] hover:text-[#24389c]'}`}>Workshops</Link>
           <Link to="/testimonials" className={`text-sm transition-colors ${location.pathname === '/testimonials' ? 'text-[#24389c] font-semibold border-b-2 border-[#24389c] pb-0.5' : 'text-[#454652] hover:text-[#24389c]'}`}>Testimonials</Link>
           <Link to="/about-elevate" className={`text-sm transition-colors ${location.pathname === '/about-elevate' ? 'text-[#24389c] font-semibold border-b-2 border-[#24389c] pb-0.5' : 'text-[#454652] hover:text-[#24389c]'}`}>About Elevate</Link>
         </div>
@@ -180,6 +181,33 @@ const Navbar = () => {
                       >
                         <span className="material-symbols-outlined text-[18px]">dashboard</span>
                         Student Dashboard
+                      </Link>
+
+                      <Link
+                        to="/growth-report"
+                        onClick={() => setIsUserMenuOpen(false)}
+                        className="flex items-center gap-2.5 px-4 py-2.5 text-sm font-medium text-[#454652] hover:bg-[#f3f4f5] hover:text-[#24389c] transition-colors"
+                      >
+                        <span className="material-symbols-outlined text-[18px]">analytics</span>
+                        Growth Report
+                      </Link>
+
+                      <Link
+                        to="/portfolio"
+                        onClick={() => setIsUserMenuOpen(false)}
+                        className="flex items-center gap-2.5 px-4 py-2.5 text-sm font-medium text-[#454652] hover:bg-[#f3f4f5] hover:text-[#24389c] transition-colors"
+                      >
+                        <span className="material-symbols-outlined text-[18px]">folder_special</span>
+                        My Portfolio
+                      </Link>
+
+                      <Link
+                        to="/events"
+                        onClick={() => setIsUserMenuOpen(false)}
+                        className="flex items-center gap-2.5 px-4 py-2.5 text-sm font-medium text-[#454652] hover:bg-[#f3f4f5] hover:text-[#24389c] transition-colors"
+                      >
+                        <span className="material-symbols-outlined text-[18px]">groups</span>
+                        Workshops & Events
                       </Link>
 
                       <Link
@@ -270,6 +298,7 @@ const Navbar = () => {
               <Link to="/courses" className="text-base font-semibold text-[#191c1e] hover:text-[#24389c]">Courses</Link>
               <Link to="/community" className="text-base font-semibold text-[#191c1e] hover:text-[#24389c]">Community</Link>
               <Link to="/career-roadmaps" className="text-base font-semibold text-[#191c1e] hover:text-[#24389c]">Career Roadmaps</Link>
+              <Link to="/events" className="text-base font-semibold text-[#191c1e] hover:text-[#24389c]">Workshops & Events</Link>
               <Link to="/testimonials" className="text-base font-semibold text-[#191c1e] hover:text-[#24389c]">Testimonials</Link>
               <Link to="/about-elevate" className="text-base font-semibold text-[#191c1e] hover:text-[#24389c]">About Elevate</Link>
 
@@ -292,8 +321,26 @@ const Navbar = () => {
                       Dashboard
                     </Link>
                     <Link
-                      to="/learning-needs"
+                      to="/growth-report"
                       className="w-full text-center border border-[#4353cf] text-[#4353cf] py-2.5 rounded-xl font-semibold text-sm"
+                    >
+                      Growth Report
+                    </Link>
+                    <Link
+                      to="/portfolio"
+                      className="w-full text-center border border-[#4353cf] text-[#4353cf] py-2.5 rounded-xl font-semibold text-sm"
+                    >
+                      My Portfolio
+                    </Link>
+                    <Link
+                      to="/events"
+                      className="w-full text-center border border-[#4353cf] text-[#4353cf] py-2.5 rounded-xl font-semibold text-sm"
+                    >
+                      Workshops & Events
+                    </Link>
+                    <Link
+                      to="/learning-needs"
+                      className="w-full text-center border border-[#c6c5d6] text-[#454652] py-2.5 rounded-xl font-semibold text-sm"
                     >
                       Learning Diagnostic
                     </Link>

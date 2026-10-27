@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import { useAuth } from '../context/AuthContext';
 import journeyService from '../services/journey.service';
+import learnerService from '../services/learner.service';
 import mainLogo from '../assets/main_logo.png';
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -54,6 +55,25 @@ const EnrollButton = ({ journeyId, journeyTitle, price = 0 }) => {
 
   const isPaid = Number(price) > 0;
 
+  // ── Auto-check if user is already enrolled ─────────────────────────────────
+  useEffect(() => {
+    if (!isAuthenticated || !journeyId) return;
+    let mounted = true;
+    learnerService.getJourneyPlayerData(journeyId)
+      .then((res) => {
+        if (mounted && res?.success) {
+          setStatus('already');
+          setMessage('You are already enrolled in this journey.');
+        }
+      })
+      .catch(() => {
+        // Not enrolled or error — remain in idle state
+      });
+    return () => {
+      mounted = false;
+    };
+  }, [isAuthenticated, journeyId]);
+
   // ── Free enrollment ────────────────────────────────────────────────────────
   const handleFreeEnroll = async () => {
     setStatus('loading');
@@ -61,7 +81,7 @@ const EnrollButton = ({ journeyId, journeyTitle, price = 0 }) => {
     try {
       await journeyService.enrollInJourney(journeyId);
       setStatus('success');
-      setMessage('You are enrolled! Check your dashboard to begin.');
+      setMessage('You are enrolled! Ready to begin learning.');
     } catch (err) {
       if (err.message?.includes('Already enrolled')) {
         setStatus('already');
@@ -88,7 +108,7 @@ const EnrollButton = ({ journeyId, journeyTitle, price = 0 }) => {
       userName:  user?.name  || '',
       onSuccess: () => {
         setStatus('success');
-        setMessage('Payment successful! You are now enrolled. Check your dashboard to begin.');
+        setMessage('Payment successful! You are now enrolled. Ready to begin learning.');
       },
       onFailure: (msg) => {
         setStatus('error');
@@ -119,15 +139,26 @@ const EnrollButton = ({ journeyId, journeyTitle, price = 0 }) => {
     <div className="space-y-3">
       <AnimatePresence mode="wait">
         {(status === 'success' || status === 'already') ? (
-          <motion.div
-            key="success"
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-3 bg-emerald-50 border border-emerald-200 text-emerald-800 px-5 py-3.5 rounded-2xl text-sm font-medium"
-          >
-            <span className="material-symbols-outlined text-[20px] text-emerald-600">task_alt</span>
-            {message}
-          </motion.div>
+          <div className="space-y-3">
+            <motion.div
+              key="success"
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex items-center gap-3 bg-emerald-50 border border-emerald-200 text-emerald-800 px-5 py-3.5 rounded-2xl text-sm font-medium"
+            >
+              <span className="material-symbols-outlined text-[20px] text-emerald-600">task_alt</span>
+              {message}
+            </motion.div>
+            <Link
+              to={`/learn/${journeyId}`}
+              className="w-full bg-[#24389c] hover:bg-[#3f51b5] text-white font-bold text-base py-4 px-8 rounded-2xl transition-all shadow-lg shadow-[#24389c]/25 flex items-center justify-center gap-2 group"
+            >
+              <span className="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">
+                play_circle
+              </span>
+              <span>Go to Lesson Player</span>
+            </Link>
+          </div>
         ) : (
           <motion.button
             key="btn"

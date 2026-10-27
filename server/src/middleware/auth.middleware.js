@@ -34,3 +34,22 @@ export const authorize = (...roles) => {
     next();
   };
 };
+
+/**
+ * Middleware: Optional JWT authentication.
+ * Attaches req.user if a valid token is present; proceeds without error if not.
+ */
+export const optionalAuthenticate = (req, res, next) => {
+  try {
+    const token =
+      req.cookies?.token ||
+      req.headers.authorization?.split(' ')[1];
+    if (token) {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      req.user = decoded;
+    }
+  } catch {
+    // Guest access: ignore invalid/expired tokens
+  }
+  next();
+};

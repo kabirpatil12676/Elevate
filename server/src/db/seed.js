@@ -21,6 +21,17 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+const CATALOGUE_TITLES = [
+  'How to Do Engineering',
+  'How to Organise an Event',
+  'How to Do Anchoring',
+  'Write Anchoring Script',
+  'What to Do in First Year',
+  'How to Form a Team',
+  'Select Problem Statement',
+  'Synopsis & Report Making',
+];
+
 const journeysData = [
   {
     title: 'How to Do Engineering',
@@ -424,6 +435,14 @@ async function seed() {
     let journeysAdded = 0;
     let stagesAdded = 0;
 
+    const educatorRes = await client.query(
+      `SELECT id FROM users WHERE email = 'educator@elevate.edu' AND role = 'educator' LIMIT 1`
+    );
+    const catalogueOwnerId = educatorRes.rows[0]?.id || null;
+    if (!catalogueOwnerId) {
+      console.log('ℹ️  Demo educator not found; catalogue journeys will be inserted without an owner until seed-educator-admin.js is run.');
+    }
+
     for (const j of journeysData) {
       // 1. Check or insert Journey
       let journeyId;
@@ -438,8 +457,8 @@ async function seed() {
       } else {
         const insertJourneyResult = await client.query(
           `INSERT INTO journeys
-             (title, description, thumbnail_url, category, skill_domain, difficulty, duration_hours, status, badge)
-           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+             (title, description, thumbnail_url, category, skill_domain, difficulty, duration_hours, status, badge, created_by)
+           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
            RETURNING id, title`,
           [
             j.title,
@@ -451,6 +470,7 @@ async function seed() {
             j.duration_hours,
             j.status,
             j.badge,
+            catalogueOwnerId,
           ]
         );
         journeyId = insertJourneyResult.rows[0].id;
@@ -475,6 +495,19 @@ async function seed() {
           stagesAdded++;
           console.log(`   ➕ Inserted Stage ${s.order_index} (${s.stage_type}): "${s.title}"`);
         }
+      }
+    }
+
+    if (catalogueOwnerId) {
+      const owned = await client.query(
+        `UPDATE journeys
+         SET created_by = $1, updated_at = NOW()
+         WHERE created_by IS NULL AND title = ANY($2::text[])
+         RETURNING title`,
+        [catalogueOwnerId, CATALOGUE_TITLES]
+      );
+      if (owned.rows.length > 0) {
+        console.log(`✔ Assigned ${owned.rows.length} unowned catalogue journey(s) to the demo educator`);
       }
     }
 

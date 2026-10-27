@@ -1,10 +1,3 @@
-/**
- * ELEVATE Phase 4A — Educator Routes
- *
- * All routes require authentication and educator or admin role.
- * Publishing requires administrator role.
- */
-
 import express from 'express';
 import {
   getMyJourneys,
@@ -18,6 +11,14 @@ import {
   deleteLesson,
   togglePublishJourney,
 } from '../controllers/educator.controller.js';
+import {
+  createActivity,
+  updateActivity,
+  deleteActivity,
+  getEducatorSubmissions,
+  getSubmissionDetails,
+  reviewSubmission,
+} from '../controllers/activity.controller.js';
 import { authenticate, authorize } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
@@ -41,5 +42,15 @@ router.put('/stages/:stageId',            updateStage);
 router.post('/stages/:stageId/lessons',   addLessonToStage);
 router.put('/lessons/:lessonId',          updateLesson);
 router.delete('/lessons/:lessonId',       deleteLesson);
+
+// ── Practical Activity Routes ──────────────────────────────────────────────
+router.post('/stages/:stageId/activities', createActivity);
+router.put('/activities/:activityId',       updateActivity);
+router.delete('/activities/:activityId',    deleteActivity);
+
+// ── Submission Review & Feedback Routes ─────────────────────────────────────
+router.get('/submissions',                  getEducatorSubmissions);
+router.get('/submissions/:submissionId',    getSubmissionDetails);
+router.post('/submissions/:submissionId/review', reviewSubmission);
 
 export default router;

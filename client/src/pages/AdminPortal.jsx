@@ -21,8 +21,40 @@ const AdminPortal = () => {
               Logged in as administrator: <span className="font-semibold text-[#191c1e]">{user?.name}</span> ({user?.email})
             </p>
           </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <a
+              href="/educator"
+              className="bg-white p-6 rounded-2xl border border-[#e1e3e4] hover:border-[#4353cf] shadow-sm hover:shadow-md transition-all group block"
+            >
+              <div className="flex items-center gap-3 mb-2">
+                <span className="material-symbols-outlined text-2xl text-[#4353cf]">school</span>
+                <h3 className="font-bold text-base text-[#191c1e] group-hover:text-[#4353cf] transition-colors">
+                  Educator Studio & Course Authoring
+                </h3>
+              </div>
+              <p className="text-xs text-[#757685]">
+                Manage growth journeys, review learner milestone submissions, and configure experiential stages.
+              </p>
+            </a>
+
+            <a
+              href="/events"
+              className="bg-white p-6 rounded-2xl border border-[#e1e3e4] hover:border-[#4353cf] shadow-sm hover:shadow-md transition-all group block"
+            >
+              <div className="flex items-center gap-3 mb-2">
+                <span className="material-symbols-outlined text-2xl text-[#4353cf]">groups</span>
+                <h3 className="font-bold text-base text-[#191c1e] group-hover:text-[#4353cf] transition-colors">
+                  Workshops & Cohort Management
+                </h3>
+              </div>
+              <p className="text-xs text-[#757685]">
+                Browse published workshops or access the Educator Studio to schedule and publish new live events.
+              </p>
+            </a>
+          </div>
+
           <div className="bg-white p-8 rounded-2xl border border-[#e1e3e4] text-center text-[#757685] text-sm">
-            Platform governance and cohort monitoring will connect in Phase 6.
+            Platform governance and advanced cohort analytics will connect in Phase 6B.
           </div>
         </div>
       </main>

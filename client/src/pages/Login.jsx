@@ -15,8 +15,6 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const from = location.state?.from?.pathname || '/dashboard';
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -38,9 +36,15 @@ const Login = () => {
 
     setLoading(true);
     try {
-      await login(email.trim(), password);
-      // Navigate to intended page or dashboard
-      navigate(from, { replace: true });
+      const signedIn = await login(email.trim(), password);
+      const intended = location.state?.from?.pathname;
+      const roleHome =
+        signedIn?.role === 'admin' ? '/admin' : signedIn?.role === 'educator' ? '/educator' : '/dashboard';
+      const next =
+        intended && intended !== '/dashboard' && intended !== '/'
+          ? intended
+          : roleHome;
+      navigate(next, { replace: true });
     } catch (err) {
       // Show specific backend message or fallback
       setError(err.message || 'Invalid credentials. Please verify your email and password.');
