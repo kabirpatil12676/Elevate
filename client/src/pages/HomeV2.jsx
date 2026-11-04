@@ -1883,7 +1883,7 @@ export default function HomeV2() {
                 {[
                   {
                     img: profDipaliBlazerImg,
-                    objectPosition: '68% 46%',
+                    objectPosition: 'center 4%',
                     cat: 'Keynote & Conclaves',
                     title: 'Statute-Aligned Legal AI & Ethical Intelligence Presentation',
                     desc: 'Delivering keynote research insights at national academic symposiums on machine learning for social equity.',
