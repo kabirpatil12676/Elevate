@@ -377,14 +377,38 @@ export default function HomeV2() {
             padding-right: 1.15rem !important;
           }
           .hv2-hero-copy {
-            max-width: 100% !important;
+            align-self: flex-start;
+            position: relative;
+            z-index: 25;
+            max-width: calc(100% - 1.15rem) !important;
+            margin-top: 0 !important;
+            padding-top: 6.35rem;
             padding-left: 1.15rem !important;
-            padding-right: 4.75rem !important;
+            padding-right: 4.5rem !important;
           }
           .hv2-hero-portrait {
-            width: min(92vw, 380px) !important;
-            height: min(54vh, 460px) !important;
-            left: 62% !important;
+            width: min(94vw, 560px) !important;
+            height: auto !important;
+            top: clamp(286px, 40%, 340px) !important;
+            bottom: 0 !important;
+            left: 50% !important;
+            right: auto !important;
+            transform: translateX(-46%) !important;
+          }
+          .hv2-hero-portrait img {
+            top: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            transform: none !important;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 100% !important;
+            object-fit: cover !important;
+            object-position: center top !important;
+          }
+          .hv2-hero-portrait > div {
+            height: 78px !important;
           }
         }
       `}</style>
@@ -927,7 +951,7 @@ export default function HomeV2() {
                 }}
               >
                 <span className="hv2-ping" style={{ width: 7, height: 7, borderRadius: '50%', background: '#059669', display: 'inline-block', flexShrink: 0 }} />
-                <span>NEW DELHI / MUMBAI / GLOBAL EDTECH</span>
+                <span>SOLAPUR / PUNE / GLOBAL EDTECH</span>
               </div>
             </div>
 
