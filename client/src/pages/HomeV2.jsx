@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
 import mentoringImg from '../assets/home page option 2/image for Mentoring India\'s Future.png';
+import heroImg0 from '../assets/home page option 2/img 2222.png';
+import profDipaliBlazerImg from '../assets/courses page/edited . 4 .jpg';
 
 /* ─────────────────────────────────────────
    HomeV2 — "Sleek Editorial Light" design
@@ -22,7 +24,7 @@ const slides = [
     title: (<>Reinventing<br />Possibilities.</>),
     words: ['Reinventing', 'Possibilities.'],
     sub: 'Legal AI Researcher & Purpose-Driven Innovator',
-    img: 'https://lh3.googleusercontent.com/aida/AEtjO1VD8oBkOhB91ijm4PtOOIJWNTEbKs0gkC6Jt-1N1v2E-oK8QxZZ7I5gapZab6_1LRRQCdIwn_HB9Ejpf4TwQd5IpspY6fzh7uLqzB_H4eZxOkkAgE9uh1niAm4Q02W59OA5DjdPsN360d2c0nvAWYqqmjz3LxxUxAUB3WkemkJhq2XS3_Nq679597ejdW4ASAgoioR25FByOp-8DlK1yHJTP4ldHPp_HbcG63bs5cqjlO24qSUH8szCGl1nhPm0AJocXLgr47R9pg',
+    img: heroImg0,
   },
   {
     title: (<>Redefining<br />Education.</>),
@@ -1148,7 +1150,7 @@ export default function HomeV2() {
                   }}>
                     <div className="hv2-portrait-card" style={{ position: 'relative', height: 420, overflow: 'hidden', background: '#f5f3ff' }}>
                       <img
-                        src="https://lh3.googleusercontent.com/aida/AEtjO1XQu-zUr-Q7_ZP13Jros6Mu3X-2nyLimsYN2nTB9lppyvugWK1-E_TedVujnSBp4gE1TS4vUoYG_-byFRseBIbRZGRcyTpdzHpJu2JIIb7P-FGYlQnuOhGEohtF1Ej6qPnCdA93dqQCc_SQVttYAV7GyA4cXQmVzCnlQd5CY2S1zaRhz1RuQxAJHm6RwXgbe412ZhqY1fMY_sakbgoLPUxZbtabmv8bI_aGEHCwXCqT8SGlxP1VjU4CeF4ZwhXIYgp4R7zbRVEnzA"
+                        src={profDipaliBlazerImg}
                         alt="Dr. Dipali Dilip Awasekar — Academic and Technologist"
                         style={{
                           width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top',
@@ -1880,21 +1882,21 @@ export default function HomeV2() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32, marginBottom: 48 }}>
                 {[
                   {
-                    img: 'https://lh3.googleusercontent.com/aida/AEtjO1Xd1maN9JaPsmLdgjhKT7re86KMV4C0Z3xP21kJoIlgi12BD-ZOs2NgySkIPX2ePpM67Y35aUyt-Kjwa9zwJiGQsWCQsb4YRk-pwn6vxlwEnZnkoqalRzk27K2R37cjTjCv8ZAfVSo9yjbK_UtyDXqLLePLXpq1NBmH5KmH0smcA-Uv3wTPOhSngBGci2OXaQ-fnxGJGMSnpj-TufUQBN1cb5QbIIUvwcNLLJtJ63yVG15nh9hxADLCuSJ7bJzBkSnUorCrZpNY4g',
+                    img: profDipaliBlazerImg,
                     objectPosition: '68% 46%',
                     cat: 'Keynote & Conclaves',
                     title: 'Statute-Aligned Legal AI & Ethical Intelligence Presentation',
                     desc: 'Delivering keynote research insights at national academic symposiums on machine learning for social equity.',
                   },
                   {
-                    img: 'https://lh3.googleusercontent.com/aida/AEtjO1VD8oBkOhB91ijm4PtOOIJWNTEbKs0gkC6Jt-1N1v2E-oK8QxZZ7I5gapZab6_1LRRQCdIwn_HB9Ejpf4TwQd5IpspY6fzh7uLqzB_H4eZxOkkAgE9uh1niAm4Q02W59OA5DjdPsN360d2c0nvAWYqqmjz3LxxUxAUB3WkemkJhq2XS3_Nq679597ejdW4ASAgoioR25FByOp-8DlK1yHJTP4ldHPp_HbcG63bs5cqjlO24qSUH8szCGl1nhPm0AJocXLgr47R9pg',
+                    img: mentoringImg,
                     objectPosition: 'center 18%',
                     cat: 'Faculty & Mentorship',
                     title: 'Dale Carnegie® Masterclass & Pedagogical Innovation',
                     desc: 'Facilitating active-learning development programmes empowering educators and young engineering leaders.',
                   },
                   {
-                    img: 'https://lh3.googleusercontent.com/aida/AEtjO1XQu-zUr-Q7_ZP13Jros6Mu3X-2nyLimsYN2nTB9lppyvugWK1-E_TedVujnSBp4gE1TS4vUoYG_-byFRseBIbRZGRcyTpdzHpJu2JIIb7P-FGYlQnuOhGEohtF1Ej6qPnCdA93dqQCc_SQVttYAV7GyA4cXQmVzCnlQd5CY2S1zaRhz1RuQxAJHm6RwXgbe412ZhqY1fMY_sakbgoLPUxZbtabmv8bI_aGEHCwXCqT8SGlxP1VjU4CeF4ZwhXIYgp4R7zbRVEnzA',
+                    img: heroImg0,
                     objectPosition: 'center 10%',
                     cat: 'Creative Expression & Outreach',
                     title: 'Storytelling, Theatre & Women in STEM Leadership',
@@ -2148,7 +2150,7 @@ export default function HomeV2() {
                     }}>
                       <div style={{ width: 72, height: 72, borderRadius: '50%', margin: '0 auto', overflow: 'hidden', border: '3px solid #db2777', boxShadow: '0 6px 16px rgba(219,39,119,0.25)' }}>
                         <img
-                          src="https://lh3.googleusercontent.com/aida/AEtjO1VD8oBkOhB91ijm4PtOOIJWNTEbKs0gkC6Jt-1N1v2E-oK8QxZZ7I5gapZab6_1LRRQCdIwn_HB9Ejpf4TwQd5IpspY6fzh7uLqzB_H4eZxOkkAgE9uh1niAm4Q02W59OA5DjdPsN360d2c0nvAWYqqmjz3LxxUxAUB3WkemkJhq2XS3_Nq679597ejdW4ASAgoioR25FByOp-8DlK1yHJTP4ldHPp_HbcG63bs5cqjlO24qSUH8szCGl1nhPm0AJocXLgr47R9pg"
+                          src={heroImg0}
                           alt="Dr. Dipali Dilip Awasekar"
                           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
                         />
