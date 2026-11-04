@@ -14,6 +14,28 @@ const generateToken = (user) => {
 };
 
 /**
+ * Cookie Configuration Helper
+ *
+ * - In production cross-origin deployment (e.g. Vercel frontend calling Render backend),
+ *   sameSite must be 'none' and secure must be true for browsers to send the cookie.
+ * - In local development (HTTP localhost), secure is false and sameSite is 'lax' for
+ *   standard browser cookie behavior without local HTTPS certificates.
+ * - Supports COOKIE_SAME_SITE override if a same-origin reverse proxy is configured.
+ */
+const getAuthCookieOptions = () => {
+  const isProduction = process.env.NODE_ENV === 'production';
+  const sameSite = process.env.COOKIE_SAME_SITE || (isProduction ? 'none' : 'lax');
+
+  return {
+    httpOnly: true,
+    secure: isProduction,
+    sameSite,
+    path: '/',
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+  };
+};
+
+/**
  * POST /api/auth/register
  */
 export const register = async (req, res, next) => {
@@ -44,12 +66,7 @@ export const register = async (req, res, next) => {
     const user = result.rows[0];
     const token = generateToken(user);
 
-    res.cookie('token', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    });
+    res.cookie('token', token, getAuthCookieOptions());
 
     res.status(201).json({ success: true, user, token });
   } catch (error) {
@@ -82,12 +99,7 @@ export const login = async (req, res, next) => {
 
     const token = generateToken(user);
 
-    res.cookie('token', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+    res.cookie('token', token, getAuthCookieOptions());
 
     const { password_hash, ...userData } = user;
     res.json({ success: true, user: userData, token });
@@ -100,7 +112,8 @@ export const login = async (req, res, next) => {
  * POST /api/auth/logout
  */
 export const logout = (req, res) => {
-  res.clearCookie('token');
+  const { maxAge, ...clearOptions } = getAuthCookieOptions();
+  res.clearCookie('token', clearOptions);
   res.json({ success: true, message: 'Logged out successfully' });
 };
 
