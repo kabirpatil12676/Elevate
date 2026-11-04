@@ -22,6 +22,7 @@
  */
 
 import pool, { query } from '../config/db.js';
+import { isRazorpayConfigured, PAYMENTS_UNAVAILABLE_MESSAGE } from './payment.controller.js';
 
 const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -201,6 +202,15 @@ export const registerForEvent = async (req, res, next) => {
     // Reject direct free registration for paid workshops
     if (Number(ev.price) > 0) {
       await client.query('ROLLBACK');
+      if (!isRazorpayConfigured()) {
+        return res.status(503).json({
+          success: false,
+          code: 'PAYMENTS_NOT_CONFIGURED',
+          message: PAYMENTS_UNAVAILABLE_MESSAGE,
+          price: Number(ev.price),
+          currency: ev.currency,
+        });
+      }
       return res.status(400).json({
         success: false,
         message: `This workshop requires payment of ₹${ev.price}. Please use the payment checkout workflow.`,

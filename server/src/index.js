@@ -35,13 +35,26 @@ if (process.env.NODE_ENV === 'production' || process.env.USE_REMOTE_DB === 'true
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  'https://elevate-eight-gamma.vercel.app',
+  'http://localhost:5173',
+].filter(Boolean);
+
 // ── Webhook must receive raw body BEFORE express.json() parses it ────────────
 // Only the /api/payments/webhook endpoint needs express.raw(); all others use JSON.
 import { handleWebhook } from './controllers/payment.controller.js';
 
 // CORS must apply to all routes including the webhook
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin(origin, callback) {
+    // Same-origin proxy requests and server-side tests omit Origin.
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+      return;
+    }
+    callback(null, false);
+  },
   credentials: true,
 }));
 

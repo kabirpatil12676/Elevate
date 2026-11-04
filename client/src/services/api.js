@@ -1,6 +1,14 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '/api' : 'http://localhost:5000/api');
+const configuredApiUrl = import.meta.env.VITE_API_URL;
+const isLocalApiUrl = typeof configuredApiUrl === 'string'
+  && /localhost|127\.0\.0\.1/.test(configuredApiUrl);
+
+// Production always uses the same-origin /api proxy unless a non-local URL is set.
+// A local .env value must not be baked into a production bundle.
+const API_BASE_URL = import.meta.env.PROD
+  ? (!configuredApiUrl || isLocalApiUrl ? '/api' : configuredApiUrl)
+  : (configuredApiUrl || 'http://localhost:5000/api');
 
 /**
  * Pre-configured Axios instance for ELEVATE API.

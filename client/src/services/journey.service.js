@@ -14,7 +14,11 @@ export const journeyService = {
   async getAllJourneys() {
     const response = await api.get('/journeys');
     // API shape: { success: true, journeys: [...] }
-    return response.data.journeys;
+    const journeys = response.data?.journeys;
+    if (!Array.isArray(journeys)) {
+      throw new Error('Course catalogue is unavailable.');
+    }
+    return journeys;
   },
 
   /**

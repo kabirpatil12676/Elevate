@@ -58,6 +58,55 @@ export function isRazorpayMocked() {
   return isMocked;
 }
 
+const EXACT_PLACEHOLDERS = new Set([
+  'your_razorpay_key_id_here',
+  'your_razorpay_key_secret_here',
+  'your_razorpay_webhook_secret_here',
+  'rzp_test_placeholder',
+  'rzp_secret_placeholder',
+  'placeholder',
+  'changeme',
+  'change_this',
+  'replace_me',
+]);
+
+function isUsableCredential(value) {
+  if (!value || typeof value !== 'string') return false;
+  const normalized = value.trim().toLowerCase();
+  if (!normalized || EXACT_PLACEHOLDERS.has(normalized)) return false;
+  // Public template strings from .env.example must not authorize live checkout or webhooks.
+  if (normalized.includes('your_razorpay') || normalized.includes('placeholder')) return false;
+  return true;
+}
+
+/**
+ * Real checkout is available only when both Razorpay credentials are present
+ * and are not template placeholders. Automated tests inject a mock client.
+ */
+export function isRazorpayConfigured() {
+  if (isMocked) return true;
+  const keyId = process.env.RAZORPAY_KEY_ID || '';
+  const keySecret = process.env.RAZORPAY_KEY_SECRET || '';
+  return keyId.trim().startsWith('rzp_')
+    && isUsableCredential(keyId)
+    && isUsableCredential(keySecret);
+}
+
+export function isWebhookSecretConfigured() {
+  return isUsableCredential(process.env.RAZORPAY_WEBHOOK_SECRET || '');
+}
+
+export const PAYMENTS_UNAVAILABLE_MESSAGE =
+  'Online payments are not available yet. Razorpay is not configured on this server. Free workshops and free journeys continue to work without payment.';
+
+function rejectPaymentsUnavailable(res) {
+  return res.status(503).json({
+    success: false,
+    code: 'PAYMENTS_NOT_CONFIGURED',
+    message: PAYMENTS_UNAVAILABLE_MESSAGE,
+  });
+}
+
 // ── Helper: Enroll user in a journey (idempotent) ───────────────────────────
 async function enrollUser(userId, journeyId, client) {
   const q = client || { query: (...args) => query(...args) };
@@ -124,6 +173,10 @@ export const createOrder = async (req, res) => {
           success: false,
           message: 'This journey is free. Use POST /api/journeys/:id/enroll instead.',
         });
+      }
+
+      if (!isRazorpayConfigured()) {
+        return rejectPaymentsUnavailable(res);
       }
 
       // Check if learner is already enrolled
@@ -217,6 +270,10 @@ export const createOrder = async (req, res) => {
           success: false,
           message: 'This workshop is free. Use POST /api/events/:id/register instead.',
         });
+      }
+
+      if (!isRazorpayConfigured()) {
+        return rejectPaymentsUnavailable(res);
       }
 
       if (event.currency !== 'INR') {
@@ -416,6 +473,10 @@ export const verifyPayment = async (req, res) => {
       success: false,
       message: 'razorpay_order_id, razorpay_payment_id and razorpay_signature are required',
     });
+  }
+
+  if (!isRazorpayConfigured()) {
+    return rejectPaymentsUnavailable(res);
   }
 
   try {
@@ -695,6 +756,15 @@ export const verifyPayment = async (req, res) => {
 //    Raw body must be preserved for HMAC verification.
 // ───────────────────────────────────────────────────────────────────────────
 export const handleWebhook = async (req, res) => {
+  if (!isWebhookSecretConfigured()) {
+    console.error('[webhook] Razorpay webhook secret is not configured. Event was not processed.');
+    return res.status(503).json({
+      success: false,
+      code: 'PAYMENTS_NOT_CONFIGURED',
+      message: 'Payment webhooks are not configured. No registration was changed.',
+    });
+  }
+
   const signature = req.headers['x-razorpay-signature'];
   if (!signature) {
     return res.status(400).json({ success: false, message: 'Missing webhook signature' });
