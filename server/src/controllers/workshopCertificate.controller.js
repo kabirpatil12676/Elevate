@@ -244,7 +244,7 @@ export const getWorkshopCertificateEligibility = async (req, res, next) => {
 
 // ─── 2. POST /api/events/:eventId/certificate/issue ───────────────────────────
 export const issueWorkshopCertificate = async (req, res, next) => {
-  const client = await pool.connect();
+  let client;
   try {
     const { eventId } = req.params;
     const userId = req.user.id;
@@ -275,6 +275,8 @@ export const issueWorkshopCertificate = async (req, res, next) => {
         reasons: eligibility.reasons,
       });
     }
+
+    client = await pool.connect();
 
     // Fetch user details for metadata
     const userRes = await client.query(`SELECT id, name, email FROM users WHERE id = $1`, [userId]);
@@ -433,10 +435,12 @@ export const issueWorkshopCertificate = async (req, res, next) => {
       download_url: `/api/events/${eventId}/certificate/download`,
     });
   } catch (err) {
-    try { await client.query('ROLLBACK'); } catch { /* ignore */ }
+    if (client) {
+      try { await client.query('ROLLBACK'); } catch { /* no open transaction */ }
+    }
     next(err);
   } finally {
-    client.release();
+    if (client) client.release();
   }
 };
 

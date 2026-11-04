@@ -271,7 +271,7 @@ export const getCertificateEligibility = async (req, res, next) => {
 
 // ─── 2. POST /api/certificates/issue/:journeyId ──────────────────────────────
 export const issueCertificate = async (req, res, next) => {
-  const client = await pool.connect();
+  let client;
   try {
     const { journeyId } = req.params;
     const userId = req.user.id;
@@ -316,6 +316,11 @@ export const issueCertificate = async (req, res, next) => {
         requirements: eligibility.requirements,
       });
     }
+
+    // Acquire a connection only after eligibility reads finish.
+    // Holding a client across those reads deadlocks the free-tier pool (max 5)
+    // when several issuance requests arrive together.
+    client = await pool.connect();
 
     // Fetch user details for certificate metadata
     const userRes = await client.query(
@@ -479,10 +484,30 @@ export const issueCertificate = async (req, res, next) => {
       download_url: `/api/certificates/${certificate.id}/download`,
     });
   } catch (err) {
-    await client.query('ROLLBACK');
+    if (client) {
+      try { await client.query('ROLLBACK'); } catch { /* no open transaction */ }
+    }
+    if (err.code === '23505') {
+      const existing = await query(
+        `SELECT id, certificate_number, verification_token, status, issued_at, email_status, metadata
+         FROM certificates WHERE user_id = $1 AND journey_id = $2`,
+        [req.user.id, req.params.journeyId]
+      );
+      if (existing.rows[0]) {
+        const row = existing.rows[0];
+        return res.status(200).json({
+          success: true,
+          message: 'Certificate has already been issued for this Growth Journey',
+          already_issued: true,
+          certificate: row,
+          verification_url: `${getBaseUrl()}/verify-certificate/${row.verification_token}`,
+          download_url: `/api/certificates/${row.id}/download`,
+        });
+      }
+    }
     next(err);
   } finally {
-    client.release();
+    if (client) client.release();
   }
 };
 
