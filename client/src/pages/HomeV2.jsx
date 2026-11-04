@@ -363,6 +363,30 @@ export default function HomeV2() {
           color: #db2777;
           transform: translateX(3px);
         }
+
+        @media (max-width: 860px) {
+          .hv2-body {
+            overflow-x: clip;
+          }
+          .hv2-body [style*="grid-template-columns"] {
+            grid-template-columns: 1fr !important;
+          }
+          .hv2-body [style*="padding: 0px 3rem"],
+          .hv2-body [style*="padding: 0 3rem"] {
+            padding-left: 1.15rem !important;
+            padding-right: 1.15rem !important;
+          }
+          .hv2-hero-copy {
+            max-width: 100% !important;
+            padding-left: 1.15rem !important;
+            padding-right: 4.75rem !important;
+          }
+          .hv2-hero-portrait {
+            width: min(92vw, 380px) !important;
+            height: min(54vh, 460px) !important;
+            left: 62% !important;
+          }
+        }
       `}</style>
 
       <div className="hv2-body">
@@ -780,7 +804,7 @@ export default function HomeV2() {
             }} />
 
             {/* Left: Giant Editorial Headline with Colored Emphasis & Staggered Reveal */}
-            <div style={{
+            <div className="hv2-hero-copy" style={{
               position: 'relative',
               zIndex: 20,
               paddingLeft: 'clamp(2rem, 6.5vw, 7rem)',
@@ -908,7 +932,7 @@ export default function HomeV2() {
             </div>
 
             {/* Center-Right: Portrait Cutout Image */}
-            <div style={{
+            <div className="hv2-hero-portrait" style={{
               position: 'absolute',
               bottom: 0,
               left: 'clamp(50%, 54vw, 56%)',
