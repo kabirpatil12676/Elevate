@@ -1,10 +1,26 @@
 import pg from 'pg';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-dotenv.config();
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const serverEnvPath = path.resolve(__dirname, '../../.env');
+const rootEnvLocalPath = path.resolve(__dirname, '../../../.env.local');
+
+// 1. Always load server/.env first (local elevate_db credentials and platform config)
+dotenv.config({ path: serverEnvPath });
+dotenv.config(); // fallback to cwd .env
 
 const isProduction = process.env.NODE_ENV === 'production';
-const connectionString = process.env.DATABASE_URL;
+const useRemoteDb = isProduction || process.env.USE_REMOTE_DB === 'true';
+
+// 2. Load .env.local only when explicitly targeting remote/production database
+if (useRemoteDb) {
+  dotenv.config({ path: rootEnvLocalPath, override: true });
+}
+
+// In local development, use original elevate_db by default unless remote DB is explicitly enabled
+const connectionString = useRemoteDb ? process.env.DATABASE_URL : null;
 
 /**
  * PostgreSQL Connection Pool Configuration
